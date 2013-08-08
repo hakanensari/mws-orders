@@ -9,7 +9,7 @@ module MWS
         private
 
         def order_nodes
-          document.xpath('//xmlns:Order')
+          xpath('Order')
         end
       end
     end

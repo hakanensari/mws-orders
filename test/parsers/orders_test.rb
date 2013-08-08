@@ -2,7 +2,8 @@ require_relative 'test_helper'
 
 class OrdersParserTest < ParserTest
   def setup
-    @orders = Parser::Orders.new(fixture)
+    node = fixture.xpath('//xmlns:Orders')
+    @orders = Parser::Orders.new(node)
   end
 
   def test_has_orders
