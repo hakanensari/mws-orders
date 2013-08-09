@@ -2,7 +2,7 @@ require_relative 'test_helper'
 
 class ShippingAddressParserTest < ParserTest
   def setup
-    node = fixture.xpath('//xmlns:ShippingAddress').first
+    node = fixture('orders').xpath('//xmlns:ShippingAddress').first
     @address = Parser::ShippingAddress.new(node)
   end
 

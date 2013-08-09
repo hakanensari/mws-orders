@@ -2,7 +2,7 @@ require_relative 'test_helper'
 
 class PaymentExecutionDetailItemParserTest < ParserTest
   def setup
-    node = fixture.xpath('//xmlns:PaymentExecutionDetailItem').first
+    node = fixture('orders').xpath('//xmlns:PaymentExecutionDetailItem').first
     @pedi = Parser::PaymentExecutionDetailItem.new(node)
   end
 

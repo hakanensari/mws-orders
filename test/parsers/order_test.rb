@@ -2,7 +2,7 @@ require_relative 'test_helper'
 
 class OrderParserTest < ParserTest
   def setup
-    node = fixture.xpath('//xmlns:Order').first
+    node = fixture('orders').xpath('//xmlns:Order').first
     @order = Parser::Order.new(node)
   end
 
