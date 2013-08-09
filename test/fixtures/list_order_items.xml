@@ -31,7 +31,7 @@
         <CODFeeDiscount>
           <CurrencyCode>USD</CurrencyCode>
           <Amount>1.00</Amount>
-        </CODFeeDiscount>   
+        </CODFeeDiscount>
         <GiftMessageText>For you!</GiftMessageText>
         <GiftWrapPrice>
           <CurrencyCode>USD</CurrencyCode>
