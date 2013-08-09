@@ -18,6 +18,7 @@ Gem::Specification.new do |gem|
 
   gem.add_dependency 'money', '~> 5.1'
   gem.add_dependency 'nokogiri', '~> 1.6'
+  gem.add_dependency 'peddler', '~> 0.5.0'
   gem.add_development_dependency 'minitest'
   gem.add_development_dependency 'pry'
   gem.add_development_dependency 'rake'
