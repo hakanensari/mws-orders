@@ -1,9 +1,16 @@
 require 'cgi'
+require 'forwardable'
 require 'time'
 
 require 'money'
 require 'nokogiri'
+require 'peddler'
 
+require 'mws/orders/client'
+require 'mws/orders/requests/base'
+require 'mws/orders/requests/orders'
+require 'mws/orders/requests/order_items'
+require 'mws/orders/requests/service_status'
 require 'mws/orders/parsers/base'
 require 'mws/orders/parsers/model'
 require 'mws/orders/parsers/collection'
