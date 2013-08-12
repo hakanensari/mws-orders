@@ -23,11 +23,11 @@ class OrderItemParserTest < ParserTest
   end
 
   def test_quantity_ordered
-    assert_kind_of String, @order_item.quantity_ordered
+    assert_kind_of Integer, @order_item.quantity_ordered
   end
 
   def test_quantity_shipped
-    assert_kind_of String, @order_item.quantity_shipped
+    assert_kind_of Integer, @order_item.quantity_shipped
   end
 
   def test_item_price

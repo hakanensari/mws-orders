@@ -19,11 +19,11 @@ module MWS
         end
 
         def quantity_ordered
-            text_at_xpath('QuantityOrdered')
+            integer_at_xpath('QuantityOrdered')
         end
 
         def quantity_shipped
-            text_at_xpath('QuantityShipped')
+            integer_at_xpath('QuantityShipped')
         end
 
         def item_price
