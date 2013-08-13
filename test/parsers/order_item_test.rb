@@ -7,62 +7,62 @@ class OrderItemParserTest < ParserTest
   end
 
   def test_asin
-    skip
+    assert_kind_of String, @order_item.asin
   end
 
   def test_order_item_id
-    skip
+    assert_kind_of String, @order_item.order_item_id
   end
 
   def test_seller_sku
-    skip
+    assert_kind_of String, @order_item.seller_sku
   end
 
   def test_title
-    skip
+    assert_kind_of String, @order_item.title
   end
 
   def test_quantity_ordered
-    skip
+    assert_kind_of Integer, @order_item.quantity_ordered
   end
 
   def test_quantity_shipped
-    skip
+    assert_kind_of Integer, @order_item.quantity_shipped
   end
 
   def test_item_price
-    skip
+    assert_kind_of Money, @order_item.item_price
   end
 
   def test_shipping_price
-    skip
+    assert_kind_of Money, @order_item.shipping_price
   end
 
   def test_scheduled_delivery_ends_at
-    skip
+    assert_kind_of Time, @order_item.scheduled_delivery_ends_at
   end
 
   def test_scheduled_delivery_starts_at
-    skip
+    assert_kind_of Time, @order_item.scheduled_delivery_starts_at
   end
 
   def test_cod_fee
-    skip
+    assert_kind_of Money, @order_item.cod_fee
   end
 
   def test_cod_fee_discount
-    skip
+    assert_kind_of Money, @order_item.cod_fee_discount
   end
 
   def test_gift_message_text
-    skip
+    assert_kind_of String, @order_item.gift_message_text
   end
 
   def test_gift_wrap_price
-    skip
+    assert_kind_of Money, @order_item.gift_wrap_price
   end
 
   def test_gift_wrap_level
-    skip
+    assert_kind_of String, @order_item.gift_wrap_level
   end
 end
