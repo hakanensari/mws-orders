@@ -2,9 +2,9 @@ module MWS
   module Orders
     module Request
       module Helper
-        class Params < SimpleDelegator
+        class Parameters < SimpleDelegator
           def initialize(action)
-            super({ 'Action' => action })
+            super({ 'Action' => camelize(action) })
           end
 
           def timestamp!
@@ -30,12 +30,18 @@ module MWS
           def camelize_keys!
             keys.each do |key|
               if key.is_a?(Symbol)
-                new_key = key.to_s.split('_').map(&:capitalize).join
+                new_key = camelize(key)
                 store(new_key, delete(key))
               end
             end
 
             self
+          end
+
+          private
+
+          def camelize(sym)
+            sym.to_s.split('_').map(&:capitalize).join
           end
         end
       end

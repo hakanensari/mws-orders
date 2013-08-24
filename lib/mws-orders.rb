@@ -9,7 +9,7 @@ require 'peddler'
 
 require 'mws/orders/client'
 require 'mws/orders/requests/helpers/structured_list'
-require 'mws/orders/requests/helpers/params'
+require 'mws/orders/requests/helpers/parameters'
 require 'mws/orders/requests/base'
 require 'mws/orders/requests/orders'
 require 'mws/orders/requests/order_items'
