@@ -7,6 +7,7 @@ require 'nokogiri'
 require 'peddler'
 
 require 'mws/orders/client'
+require 'mws/orders/requests/helpers/structured_list'
 require 'mws/orders/requests/base'
 require 'mws/orders/requests/orders'
 require 'mws/orders/requests/order_items'
