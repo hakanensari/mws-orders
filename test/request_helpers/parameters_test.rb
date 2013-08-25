@@ -28,4 +28,9 @@ class ParametersHelperTest < MiniTest::Test
     refute @parameters.camelize_keys!.has_key?(:underscored_key)
     assert @parameters.has_key?('UnderscoredKey')
   end
+
+  def test_updates_delegated_hash
+    assert_kind_of Parameters, @parameters.update(key: 'value')
+    assert_equal 'value', @parameters.fetch(:key)
+  end
 end

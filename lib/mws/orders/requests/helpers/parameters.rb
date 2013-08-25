@@ -2,6 +2,7 @@ module MWS
   module Orders
     module Request
       module Helper
+        # The request parameters Hash.
         class Parameters < SimpleDelegator
           def initialize(action)
             super({ 'Action' => camelize(action) })
@@ -35,6 +36,11 @@ module MWS
               end
             end
 
+            self
+          end
+
+          def update(hsh)
+            __getobj__.update(hsh)
             self
           end
 
