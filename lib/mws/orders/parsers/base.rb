@@ -7,6 +7,20 @@ module MWS
         def initialize(document)
           @document = document
         end
+
+        private
+
+        def at_xpath(path)
+          document.at_xpath(with_namespace(path))
+        end
+
+        def xpath(path)
+          document.xpath(with_namespace(path))
+        end
+
+        def with_namespace(path)
+          path.split('/').map { |attr| "xmlns:#{attr}" }.join('/')
+        end
       end
     end
   end

@@ -7,12 +7,6 @@ module MWS
         def each
           raise NotImplementedError
         end
-
-        private
-
-        def xpath(path)
-          document.xpath("xmlns:#{path}")
-        end
       end
     end
   end
