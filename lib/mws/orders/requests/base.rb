@@ -3,15 +3,46 @@ module MWS
     module Request
       class Base
         attr :client
+        attr_accessor :last_response
 
         def initialize(client)
+          @client = client
         end
 
-        def structured_list(attr, values)
-          key = attr.match(/.([A-Z].*)/)[1]
-          Array(values)
-            .each_with_index
-            .reduce({}) { |a, (v, i)| a.merge("#{attr}.#{key}.#{i + 1}" => v) }
+        private
+
+        def execute
+          fetch
+          parse
+        end
+
+        def fetch
+          @last_response = client.post(query: parameters)
+        end
+
+        def parameters(action = nil)
+          @parameters = Helper::Parameters.new(action) if action
+          @parameters
+        end
+
+        def parse
+          parser.new(node)
+        end
+
+        def parser
+          Parser.const_get(resource_name)
+        end
+
+        def node
+          document.xpath("//xmlns:#{resource_name}")
+        end
+
+        def document
+          Nokogiri::XML(last_response.body)
+        end
+
+        def resource_name
+          self.class.name.split('::').last
         end
       end
     end

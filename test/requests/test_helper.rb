@@ -1,8 +1,18 @@
 require_relative '../test_helper'
 
-class RequestTest < MiniTest::Test
-  def client
-    mws = YAML.read_file(File.expand_path('../../fixtures/mws.xml', __FILE__))
-    MWS::Orders::Client.new(*mws.values)
+class RequestTestHelper < Minitest::Test
+  def mock_response_body
+    raise NotImplementedError
+  end
+
+  def mock_response
+    res = Minitest::Mock.new
+    res.expect(:body, mock_response_body)
+  end
+
+  def mock_client
+    client = Minitest::Mock.new
+    client.expect(:home_marketplace_id, '123')
+    client.expect(:post, mock_response, [Hash])
   end
 end

@@ -10,16 +10,22 @@ module MWS
       def_delegator :order_items, :list_by_next_token, :list_order_items_by_next_token
       def_delegator :service_status, :get, :get_service_status
 
+      def home_marketplace_id
+        marketplace_id(country)
+      end
+
+      private
+
       def orders
-        Request::Orders.new(self)
+        @orders ||= Request::Orders.new(self)
       end
 
       def order_items
-        Request::OrderItems.new(self)
+        @order_items ||= Request::OrderItems.new(self)
       end
 
       def service_status
-        Request::ServiceStatus.new(self)
+        @service_status ||= Request::ServiceStatus.new(self)
       end
     end
   end
