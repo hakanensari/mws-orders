@@ -14,6 +14,7 @@ module MWS
         def get(*amazon_order_ids)
           parameters(:get_order)
             .update(amazon_order_id: amazon_order_ids)
+            .format_structured_lists!
             .camelize_keys!
 
           execute
