@@ -1,10 +1,8 @@
 require_relative '../test_helper'
 
 class StructuredListHelperTest < MiniTest::Test
-  include Request::Helper
-
   def setup
-    @structured_list = StructuredList.new(:order_status)
+    @structured_list = Helper::StructuredList.new(:order_status)
   end
 
   def test_builds_a_structured_list_for_a_single_value

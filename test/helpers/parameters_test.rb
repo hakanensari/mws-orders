@@ -1,10 +1,8 @@
 require_relative '../test_helper'
 
 class ParametersHelperTest < MiniTest::Test
-  include Request::Helper
-
   def setup
-    @parameters = Parameters.new(:do_it)
+    @parameters = Helper::Parameters.new(:do_it)
   end
 
   def test_has_an_action_key
@@ -30,7 +28,7 @@ class ParametersHelperTest < MiniTest::Test
   end
 
   def test_updates_delegated_hash
-    assert_kind_of Parameters, @parameters.update(key: 'value')
+    assert_kind_of Helper::Parameters, @parameters.update(key: 'value')
     assert_equal 'value', @parameters.fetch(:key)
   end
 end
