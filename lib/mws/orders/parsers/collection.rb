@@ -7,6 +7,10 @@ module MWS
         def each
           raise NotImplementedError
         end
+
+        def empty?
+          count == 0
+        end
       end
     end
   end
