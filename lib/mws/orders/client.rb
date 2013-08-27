@@ -35,7 +35,25 @@ module MWS
       # Returns an enumerable list of Orders.
       def_delegator :orders, :list_by_next_token, :list_orders_by_next_token
 
+      # Public: List order items for an amazon order.
+      #
+      # amazon_order_id - The String Amazon order id.
+      #
+      # Examples
+      #
+      #   client.list_order_items('123-1234567-1234567')
+      #
+      # Returns an enaumerable list of Order Items.
       def_delegator :order_items, :list, :list_order_items
+
+      # Public: List the next page of order items using the NextToken
+      # parameter.
+      #
+      # Examples
+      #
+      #   client.list_order_items_by_next_token
+      #
+      # Returns an enaumerable list of Order Items.
       def_delegator :order_items, :list_by_next_token, :list_order_items_by_next_token
 
       # Public: Get the service status of the API.
