@@ -15,4 +15,9 @@ class ClientTest < MiniTest::Test
     order = @client.list_orders_by_next_token.first
     refute_empty @client.get_order(order.amazon_order_id)
   end
+
+  def test_gets_service_status
+    status = @client.get_service_status
+    refute_empty status.to_s
+  end
 end
