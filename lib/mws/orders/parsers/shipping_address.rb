@@ -2,27 +2,27 @@ module MWS
   module Orders
     module Parser
       class ShippingAddress < Model
-        def name
+        value :name do
           text_at_xpath('Name')
         end
 
-        def address_lines
+        value :address_lines do
           1.upto(3).map { |i| at_xpath("AddressLine#{i}") }.compact.map(&:text)
         end
 
-        def city
+        value :city do
           text_at_xpath('City')
         end
 
-        def state_or_region
+        value :state_or_region do
           text_at_xpath('StateOrRegion')
         end
 
-        def postal_code
+        value :postal_code do
           text_at_xpath('PostalCode')
         end
 
-        def country
+        value :country do
           text_at_xpath('Country')
         end
       end

@@ -1,8 +1,10 @@
 require 'cgi'
+require 'forwardable'
 require 'time'
 
 require 'money'
 require 'nokogiri'
+require 'structure'
 
 require 'mws/orders/parsers/base'
 require 'mws/orders/parsers/model'

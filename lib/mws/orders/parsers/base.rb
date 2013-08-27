@@ -4,6 +4,10 @@ module MWS
       class Base
         attr :document
 
+        def self.inherited(subclass)
+          subclass.send(:include, Structure)
+        end
+
         def initialize(document)
           @document = document
         end

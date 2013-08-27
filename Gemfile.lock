@@ -4,12 +4,13 @@ PATH
     mws-orders (0.0.1)
       money (~> 5.1)
       nokogiri (~> 1.6)
+      structure (~> 0.25.0)
 
 GEM
   remote: http://rubygems.org/
   specs:
     coderay (1.0.9)
-    i18n (0.6.4)
+    i18n (0.6.5)
     method_source (0.8.2)
     mini_portile (0.5.1)
     minitest (5.0.6)
@@ -23,6 +24,7 @@ GEM
       slop (~> 3.4)
     rake (10.1.0)
     slop (3.4.6)
+    structure (0.25.0)
 
 PLATFORMS
   ruby
