@@ -25,6 +25,10 @@ module MWS
         value :country_code do
           text_at_xpath('CountryCode')
         end
+
+        value :phone do
+          text_at_xpath('Phone')
+        end
       end
     end
   end
