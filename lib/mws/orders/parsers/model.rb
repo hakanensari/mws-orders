@@ -14,13 +14,13 @@ module MWS
           str.to_i if str
         end
 
-        # TODO: Test this against JPY. It will most probably require special
-        # handling.
         def money_at_xpath(path)
           return unless amount = float_at_xpath("#{path}/Amount")
-          currency_code = text_at_xpath("#{path}/CurrencyCode")
 
-          Money.new(amount * 100, currency_code)
+          currency_code = text_at_xpath("#{path}/CurrencyCode")
+          amount = amount * 100 unless currency_code == 'JPY'
+
+          Money.new(amount, currency_code)
         end
 
         def text_at_xpath(path)
