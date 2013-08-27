@@ -2,14 +2,12 @@ module MWS
   module Orders
     module Parser
       class Orders < Collection
-        def each(&blk)
-          order_nodes.each { |node| yield Order.new(node) }
-        end
+        extend Forwardable
 
-        private
+        def_delegator :order_nodes, :each
 
-        def order_nodes
-          xpath('Order')
+        value :order_nodes do
+          xpath('Order').map { |node| Order.new(node) }
         end
       end
     end

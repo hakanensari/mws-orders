@@ -2,63 +2,63 @@ module MWS
   module Orders
     module Parser
       class OrderItem < Model
-        def asin
+        value :asin do
             text_at_xpath('ASIN')
         end
 
-        def order_item_id
+        value :order_item_id do
             text_at_xpath('OrderItemId')
         end
 
-        def seller_sku
+        value :seller_sku do
             text_at_xpath('SellerSKU')
         end
 
-        def title
+        value :title do
             text_at_xpath('Title')
         end
 
-        def quantity_ordered
+        value :quantity_ordered do
             integer_at_xpath('QuantityOrdered')
         end
 
-        def quantity_shipped
+        value :quantity_shipped do
             integer_at_xpath('QuantityShipped')
         end
 
-        def item_price
+        value :item_price do
             money_at_xpath('ItemPrice')
         end
 
-        def shipping_price
+        value :shipping_price do
             money_at_xpath('ShippingPrice')
         end
 
-        def scheduled_delivery_ends_at
+        value :scheduled_delivery_ends_at do
             time_at_xpath('ScheduledDeliveryEndDate')
         end
 
-        def scheduled_delivery_starts_at
+        value :scheduled_delivery_starts_at do
             time_at_xpath('ScheduledDeliveryStartDate')
         end
 
-        def cod_fee
+        value :cod_fee do
             money_at_xpath('CODFee')
         end
 
-        def cod_fee_discount
+        value :cod_fee_discount do
             money_at_xpath('CODFeeDiscount')
         end
 
-        def gift_message_text
+        value :gift_message_text do
             text_at_xpath('GiftMessageText')
         end
 
-        def gift_wrap_price
+        value :gift_wrap_price do
             money_at_xpath('GiftWrapPrice')
         end
 
-        def gift_wrap_level
+        value :gift_wrap_level do
             text_at_xpath('GiftWrapLevel')
         end
       end

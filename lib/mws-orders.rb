@@ -6,6 +6,7 @@ require 'time'
 require 'money'
 require 'nokogiri'
 require 'peddler'
+require 'structure'
 
 require 'mws/orders/client'
 require 'mws/orders/helpers/structured_list'

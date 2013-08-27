@@ -2,75 +2,75 @@ module MWS
   module Orders
     module Parser
       class Order < Model
-        def amazon_order_id
+        value :amazon_order_id do
           text_at_xpath('AmazonOrderId')
         end
 
-        def purchased_at
+        value :purchased_at do
           time_at_xpath('PurchaseDate')
         end
 
-        def last_updated_at
+        value :last_updated_at do
           time_at_xpath('LastUpdatedDate')
         end
 
-        def status
+        value :status do
           text_at_xpath('OrderStatus')
         end
 
-        def type
+        value :type do
           text_at_xpath('OrderType')
         end
 
-        def sales_channel
+        value :sales_channel do
           text_at_xpath('SalesChannel')
         end
 
-        def ship_service_level
+        value :ship_service_level do
           text_at_xpath('ShipServiceLevel')
         end
 
-        def fulfillment_channel
+        value :fulfillment_channel do
           text_at_xpath('FulfillmentChannel')
         end
 
-        def total
+        value :total do
           money_at_xpath('OrderTotal')
         end
 
-        def shipping_address
+        value :shipping_address do
           ShippingAddress.new(at_xpath('ShippingAddress'))
         end
 
-        def number_of_items_shipped
+        value :number_of_items_shipped do
           integer_at_xpath('NumberOfItemsShipped')
         end
 
-        def number_of_items_unshipped
+        value :number_of_items_unshipped do
           integer_at_xpath('NumberOfItemsUnshipped')
         end
 
-        def payment_execution_detail
+        value :payment_execution_detail do
           PaymentExecutionDetail.new(at_xpath('PaymentExecutionDetail'))
         end
 
-        def payment_method
+        value :payment_method do
           text_at_xpath('PaymentMethod')
         end
 
-        def marketplace_id
+        value :marketplace_id do
           text_at_xpath('MarketplaceId')
         end
 
-        def buyer_name
+        value :buyer_name do
           text_at_xpath('BuyerName')
         end
 
-        def buyer_email
+        value :buyer_email do
           text_at_xpath('BuyerEmail')
         end
 
-        def shipment_service_level_category
+        value :shipment_service_level_category do
           text_at_xpath('ShipmentServiceLevelCategory')
         end
       end

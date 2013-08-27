@@ -2,11 +2,11 @@ module MWS
   module Orders
     module Parser
       class PaymentExecutionDetailItem < Model
-        def payment
+        value :payment do
           money_at_xpath('Payment')
         end
 
-        def payment_method
+        value :payment_method do
           text_at_xpath('PaymentMethod')
         end
       end
