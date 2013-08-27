@@ -3,7 +3,7 @@ module MWS
     class Client < ::Peddler::Orders
       extend Forwardable
 
-      # Public: Gets one or more orders.
+      # Public: Get one or more orders.
       #
       # amazon_order_ids - One or more String Amazon order ids.
       #
@@ -11,7 +11,7 @@ module MWS
       #
       #   client.get_order('123-1234567-1234567')
       #
-      # Returns Orders.
+      # Returns an enumerable list of Orders.
       def_delegator :orders, :get, :get_order
 
       # Public: List orders created or updated during a specified time frame.
@@ -23,22 +23,31 @@ module MWS
       #
       #   client.list_orders(created_after: 1.week.ago)
       #
-      # Returns Orders.
+      # Returns an enumerable list of Orders.
       def_delegator :orders, :list, :list_orders
 
-      # Public: Lists the next page of orders using the NextToken parameter.
+      # Public: List the next page of orders using the NextToken parameter.
       #
       # Examples
       #
       #   client.list_orders_by_next_token
       #
-      # Returns Orders.
+      # Returns an enumerable list of Orders.
       def_delegator :orders, :list_by_next_token, :list_orders_by_next_token
 
       def_delegator :order_items, :list, :list_order_items
       def_delegator :order_items, :list_by_next_token, :list_order_items_by_next_token
+
+      # Public: Get the service status of the API.
+      #
+      # Examples
+      #
+      #   client.get_service_status
+      #
+      # Returns the Service Status.
       def_delegator :service_status, :get, :get_service_status
 
+      # Internal: Returns the String home marketplace id of the client.
       def home_marketplace_id
         marketplace_id(country)
       end
