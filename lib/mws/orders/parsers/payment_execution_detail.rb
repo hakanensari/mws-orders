@@ -8,7 +8,7 @@ module MWS
 
         private
 
-        value :payment_execution_detail_item_nodes do
+        def payment_execution_detail_item_nodes
           xpath('PaymentExecutionDetailItem')
         end
       end

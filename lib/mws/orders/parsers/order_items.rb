@@ -8,7 +8,7 @@ module MWS
 
         private
 
-        value :order_item_nodes do
+        def order_item_nodes
           xpath('OrderItem')
         end
       end

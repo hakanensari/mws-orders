@@ -6,7 +6,9 @@ module MWS
 
         def_delegator :order_nodes, :each
 
-        value :order_nodes do
+        private
+
+        def order_nodes
           xpath('Order').map { |node| Order.new(node) }
         end
       end

@@ -2,6 +2,8 @@ module MWS
   module Orders
     module Parser
       class Model < Base
+        include Structure
+
         def float_at_xpath(path)
           text_at_xpath(path).to_f
         end
