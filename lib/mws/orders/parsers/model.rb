@@ -22,7 +22,8 @@ module MWS
         end
 
         def text_at_xpath(path)
-          at_xpath(path).text
+          node = at_xpath(path)
+          node.text if node
         end
 
         def time_at_xpath(path)
