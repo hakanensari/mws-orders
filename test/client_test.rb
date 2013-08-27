@@ -16,6 +16,11 @@ class ClientTest < MiniTest::Test
     refute_empty @client.get_order(order.amazon_order_id)
   end
 
+  def test_manages_order_items
+    order = @client.list_orders(created_after: Date.today - 365).first
+    refute_empty @client.list_order_items(order.amazon_order_id)
+  end
+
   def test_gets_service_status
     status = @client.get_service_status
     refute_empty status.to_s
