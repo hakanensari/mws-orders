@@ -2,8 +2,6 @@ module MWS
   module Orders
     module Request
       class Orders < Base
-        include Tokenable
-
         def get(*amazon_order_ids)
           parameters(:get_order)
             .update(amazon_order_id: amazon_order_ids)
@@ -32,7 +30,6 @@ module MWS
 
           execute
         end
-
       end
     end
   end

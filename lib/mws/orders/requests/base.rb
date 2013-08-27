@@ -9,6 +9,11 @@ module MWS
           @client = client
         end
 
+        def next_token
+          node = document.at_xpath('//xmlns:NextToken')
+          node.text if node
+        end
+
         private
 
         def execute
@@ -30,18 +35,18 @@ module MWS
         end
 
         def parser
-          Parser.const_get(resource_name)
+          Parser.const_get(name)
         end
 
         def node
-          document.xpath("//xmlns:#{resource_name}")
+          document.xpath("//xmlns:#{name}")
         end
 
         def document
           Nokogiri::XML(last_response.body)
         end
 
-        def resource_name
+        def name
           self.class.name.split('::').last
         end
       end
