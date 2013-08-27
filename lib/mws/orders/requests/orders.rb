@@ -2,6 +2,8 @@ module MWS
   module Orders
     module Request
       class Orders < Base
+        include Tokenable
+
         # Public: Gets specified orders.
         #
         # amazon_order_ids - One or more String Amazon order numbers.
@@ -57,11 +59,6 @@ module MWS
           execute
         end
 
-        # Public: Returns the String NextToken returned by the last response.
-        def next_token
-          node = document.at_xpath('//xmlns:NextToken')
-          node.text if node
-        end
       end
     end
   end
