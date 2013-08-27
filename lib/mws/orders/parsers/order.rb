@@ -11,7 +11,7 @@ module MWS
         end
 
         value :last_updated_at do
-          time_at_xpath('LastUpdatedDate')
+          time_at_xpath('LastUpdateDate')
         end
 
         value :status do

@@ -29,7 +29,7 @@ class ShippingAddressParserTest < ParserTest
     assert_kind_of String, @address.postal_code
   end
 
-  def test_country
-    assert_kind_of String, @address.country
+  def test_country_code
+    assert_kind_of String, @address.country_code
   end
 end

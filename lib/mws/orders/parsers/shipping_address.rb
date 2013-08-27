@@ -22,8 +22,8 @@ module MWS
           text_at_xpath('PostalCode')
         end
 
-        value :country do
-          text_at_xpath('Country')
+        value :country_code do
+          text_at_xpath('CountryCode')
         end
       end
     end

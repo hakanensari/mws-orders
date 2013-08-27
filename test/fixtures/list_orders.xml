@@ -7,7 +7,7 @@
       <Order>
         <AmazonOrderId>058-1233752-8214740</AmazonOrderId>
         <PurchaseDate>2010-10-05T00%3A06%3A07.000Z</PurchaseDate>
-        <LastUpdatedDate>2010-10-05T12%3A43%3A16.000Z</LastUpdatedDate>
+        <LastUpdateDate>2010-10-05T12%3A43%3A16.000Z</LastUpdateDate>
         <OrderStatus>Unshipped</OrderStatus>
         <OrderType>StandardOrder</OrderType>
         <SalesChannel>Checkout by Amazon</SalesChannel>
@@ -23,7 +23,7 @@
           <City>Seattle</City>
           <StateOrRegion>WA</StateOrRegion>
           <PostalCode>98102</PostalCode>
-          <Country>US</Country>
+          <CountryCode>US</CountryCode>
         </ShippingAddress>
         <NumberOfItemsShipped>0</NumberOfItemsShipped>
         <NumberOfItemsUnshipped>1</NumberOfItemsUnshipped>
