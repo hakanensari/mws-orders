@@ -5,20 +5,22 @@ module MWS
         include Structure
 
         def float_at_xpath(path)
-          text_at_xpath(path).to_f
+          str = text_at_xpath(path)
+          str.to_f if str
         end
 
         def integer_at_xpath(path)
-          text_at_xpath(path).to_i
+          str = text_at_xpath(path)
+          str.to_i if str
         end
 
         # TODO: Test this against JPY. It will most probably require special
         # handling.
         def money_at_xpath(path)
-          amount = float_at_xpath("#{path}/Amount") * 100
+          return unless amount = float_at_xpath("#{path}/Amount")
           currency_code = text_at_xpath("#{path}/CurrencyCode")
 
-          Money.new(amount, currency_code)
+          Money.new(amount * 100, currency_code)
         end
 
         def text_at_xpath(path)
@@ -27,7 +29,8 @@ module MWS
         end
 
         def time_at_xpath(path)
-          Time.parse(CGI.unescape(text_at_xpath(path)))
+          str = text_at_xpath(path)
+          Time.parse(CGI.unescape(str)) if str
         end
       end
     end
