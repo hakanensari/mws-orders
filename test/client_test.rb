@@ -10,7 +10,7 @@ class ClientTest < MiniTest::Test
     @client = Client.new(*mws_credentials.values)
   end
 
-  def test_requests_orders
+  def test_manages_orders
     @client.list_orders(created_after: Date.today - 365)
     order = @client.list_orders_by_next_token.first
     refute_empty @client.get_order(order.amazon_order_id)
