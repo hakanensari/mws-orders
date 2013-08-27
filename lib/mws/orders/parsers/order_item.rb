@@ -30,16 +30,20 @@ module MWS
           money_at_xpath('ItemPrice')
         end
 
+        value :item_tax do
+          money_at_xpath('ItemTax')
+        end
+
         value :shipping_price do
           money_at_xpath('ShippingPrice')
         end
 
-        value :scheduled_delivery_ends_at do
-          time_at_xpath('ScheduledDeliveryEndDate')
+        value :shipping_tax do
+          money_at_xpath('ShippingTax')
         end
 
-        value :scheduled_delivery_starts_at do
-          time_at_xpath('ScheduledDeliveryStartDate')
+        value :shipping_discount do
+          money_at_xpath('ShippingDiscount')
         end
 
         value :cod_fee do
@@ -48,6 +52,10 @@ module MWS
 
         value :cod_fee_discount do
           money_at_xpath('CODFeeDiscount')
+        end
+
+        value :promotion_discount do
+          money_at_xpath('PromotionDiscount')
         end
 
         value :gift_message_text do
@@ -60,6 +68,18 @@ module MWS
 
         value :gift_wrap_level do
           text_at_xpath('GiftWrapLevel')
+        end
+
+        value :scheduled_delivery_ends_at do
+          time_at_xpath('ScheduledDeliveryEndDate')
+        end
+
+        value :scheduled_delivery_starts_at do
+          time_at_xpath('ScheduledDeliveryStartDate')
+        end
+
+        value :promotion_ids do
+          xpath('PromotionId').map(&:text)
         end
       end
     end
