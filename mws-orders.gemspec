@@ -10,7 +10,7 @@ Gem::Specification.new do |gem|
   gem.email       = ['code@papercavalier.com']
   gem.homepage    = 'http://github.com/papercavalier/peddler'
   gem.summary     = %q{Wraps the Amazon MWS Orders API}
-  gem.description = %q{A Ruby wrapper to the Amazon MWS Orders API}
+  gem.description = %q{A Ruby interface to the Amazon MWS Orders API}
 
   gem.files         = Dir.glob('lib/**/*') + %w(LICENSE README.md)
   gem.test_files    = Dir.glob('test/**/*')
