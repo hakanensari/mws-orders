@@ -6,6 +6,12 @@ module MWS
           parameters(:get_service_status)
           execute
         end
+
+        private
+
+        def node
+          document.xpath("//xmlns:GetServiceStatusResult")
+        end
       end
     end
   end
