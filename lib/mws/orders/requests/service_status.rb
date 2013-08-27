@@ -3,6 +3,8 @@ module MWS
     module Request
       class ServiceStatus < Base
         def get
+          parameters(:get_service_status)
+          execute
         end
       end
     end
