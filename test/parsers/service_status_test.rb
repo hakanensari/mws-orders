@@ -21,4 +21,18 @@ class ServiceStatusParserTest < ParserTest
   def test_messages
     assert_kind_of Array, @service_status.messages
   end
+
+  def test_ok?
+    @service_status.stub(:status, 'GREEN') do
+      assert @service_status.ok?
+    end
+
+    @service_status.stub(:status, 'RED') do
+      refute @service_status.ok?
+    end
+  end
+
+  def test_inspect
+    assert_equal @service_status.status, @service_status.to_s
+  end
 end
