@@ -7,7 +7,7 @@ module MWS
         end
 
         value :address_lines do
-          1.upto(3).map { |i| at_xpath("AddressLine#{i}") }.compact.map(&:text)
+          1.upto(3).map { |i| text_at_xpath("AddressLine#{i}") }.compact
         end
 
         value :city do
