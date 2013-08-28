@@ -1,47 +1,73 @@
 # MWS Orders
 
-A Ruby interface to the Amazon MWS Orders API
-
-![peddler][1]
+**MWS Orders** is a fully-featured Ruby interface to the [Amazon Marketplace
+Web Service (MWS) Orders API][1].
 
 ## Usage
 
-Start by instantiating a client:
+Instantiate a client:
 
 ```ruby
 client = MWS::Orders::Client.new('GB', 'aws_key', 'aws_secret', 'seller_id')
 ```
 
-API methods are available on the client.
+[API methods are available on the client][2].
 
 ### Orders
 
-The following return an enumerable list of orders.
+List orders created or updated during a time frame you specify:
 
 ```ruby
-client.list_orders(created_after: 1.week.ago)
+# See the API for all available parameters.
+client.list_orders(
+  created_after: 1.week.ago,
+  order_status: %w(Pending Unshipped)
+)
+```
+
+List the next page of orders:
+
+```ruby
 client.list_orders_by_next_token
+```
+
+Get one or more orders based on their order numbers:
+
+```ruby
 client.get_order('123-1234567-1234567')
 ```
 
+All above queries will return an enumerable list of orders.
+
 ### Order Items
 
-The following return an enumerable list of order items.
+List order items based on an order number you specify:
 
 ```ruby
 client.list_order_items('123-1234567-1234567')
+```
+
+List the next page of order items:
+
+```ruby
 client.list_order_items_by_next_token
 ```
 
+All above queries will return an enumerable list of order items.
+
 ### Service Status
 
-The following returns the service status of the API.
+Check the operational status of the API:
 
 ```ruby
 client.get_service_status
 ```
 
-Check the [API docs][2] for further detail.
+### Naming Conventions
 
-[1]: http://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Peddler%2C%E8%A1%8C%E5%95%86%E4%BA%BA%E3%80%81PB300529.JPG/512px-Peddler%2C%E8%A1%8C%E5%95%86%E4%BA%BA%E3%80%81PB300529.JPG
-[2]: http://docs.developer.amazonservices.com/en_UK/orders/index.html
+Request and response attribute names follow Amazon's naming conventions with a
+few exceptions, where some Railsism has insidiuously crept in&mdash;e.g.
+`shipped_at` instead of `ShipDate`.
+
+[1]: http://docs.developer.amazonservices.com/en_UK/orders/index.html
+[2]: https://github.com/papercavalier/mws-orders/blob/master/lib/mws/orders/client.rb
