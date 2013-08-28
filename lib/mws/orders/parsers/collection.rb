@@ -13,7 +13,7 @@ module MWS
         end
 
         def inspect
-          "#{self.class.name.split('::').last}: #{self.count}"
+          "#<#{self.class}>"
         end
         alias :to_s :inspect
       end
