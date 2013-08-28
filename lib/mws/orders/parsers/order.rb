@@ -6,6 +6,10 @@ module MWS
           text_at_xpath('AmazonOrderId')
         end
 
+        value :seller_order_id do
+          text_at_xpath('SellerOrderId')
+        end
+
         value :purchased_at do
           time_at_xpath('PurchaseDate')
         end
@@ -18,28 +22,28 @@ module MWS
           text_at_xpath('OrderStatus')
         end
 
-        value :type do
-          text_at_xpath('OrderType')
+        value :fulfillment_channel do
+          text_at_xpath('FulfillmentChannel')
         end
 
         value :sales_channel do
           text_at_xpath('SalesChannel')
         end
 
+        value :order_channel do
+          text_at_xpath('OrderChannel')
+        end
+
         value :ship_service_level do
           text_at_xpath('ShipServiceLevel')
         end
 
-        value :fulfillment_channel do
-          text_at_xpath('FulfillmentChannel')
+        value :shipping_address do
+          ShippingAddress.new(at_xpath('ShippingAddress'))
         end
 
         value :total do
           money_at_xpath('OrderTotal')
-        end
-
-        value :shipping_address do
-          ShippingAddress.new(at_xpath('ShippingAddress'))
         end
 
         value :number_of_items_shipped do
@@ -73,6 +77,30 @@ module MWS
 
         value :shipment_service_level_category do
           text_at_xpath('ShipmentServiceLevelCategory')
+        end
+
+        value :cba_displayable_shipping_label do
+          text_at_xpath('CbaDisplayableShippingLabel')
+        end
+
+        value :shipped_by_amazon_tfm do
+          text_at_xpath('ShippedByAmazonTFM')
+        end
+
+        value :tfm_shipment_status do
+          text_at_xpath('TFMShipmentStatus')
+        end
+
+        value :type do
+          text_at_xpath('OrderType')
+        end
+
+        value :earliest_shipped_at do
+          time_at_xpath('EarliestShipDate')
+        end
+
+        value :latest_shipped_at do
+          time_at_xpath('LatestShipDate')
         end
       end
     end

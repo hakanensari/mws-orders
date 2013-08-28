@@ -6,12 +6,12 @@ module MWS
           text_at_xpath('ASIN')
         end
 
-        value :order_item_id do
-          text_at_xpath('OrderItemId')
-        end
-
         value :seller_sku do
           text_at_xpath('SellerSKU')
+        end
+
+        value :order_item_id do
+          text_at_xpath('OrderItemId')
         end
 
         value :title do
@@ -26,24 +26,48 @@ module MWS
           integer_at_xpath('QuantityShipped')
         end
 
-        value :item_price do
-          money_at_xpath('ItemPrice')
+        value :gift_message_text do
+          text_at_xpath('GiftMessageText')
         end
 
-        value :item_tax do
-          money_at_xpath('ItemTax')
+        value :gift_wrap_level do
+          text_at_xpath('GiftWrapLevel')
+        end
+
+        value :item_price do
+          money_at_xpath('ItemPrice')
         end
 
         value :shipping_price do
           money_at_xpath('ShippingPrice')
         end
 
+        value :gift_wrap_price do
+          money_at_xpath('GiftWrapPrice')
+        end
+
+        value :item_tax do
+          money_at_xpath('ItemTax')
+        end
+
         value :shipping_tax do
           money_at_xpath('ShippingTax')
         end
 
+        value :gift_wrap_tax do
+          money_at_xpath('GiftWrapPrice')
+        end
+
         value :shipping_discount do
           money_at_xpath('ShippingDiscount')
+        end
+
+        value :promotion_discount do
+          money_at_xpath('PromotionDiscount')
+        end
+
+        value :promotion_ids do
+          xpath('PromotionId').map(&:text)
         end
 
         value :cod_fee do
@@ -54,20 +78,20 @@ module MWS
           money_at_xpath('CODFeeDiscount')
         end
 
-        value :promotion_discount do
-          money_at_xpath('PromotionDiscount')
+        value :invoice_data do
+          xpath('InvoiceData').map { |node| InvoiceData.new(node) }
         end
 
-        value :gift_message_text do
-          text_at_xpath('GiftMessageText')
+        value :condition_id do
+          text_at_xpath('ConditionId')
         end
 
-        value :gift_wrap_price do
-          money_at_xpath('GiftWrapPrice')
+        value :condition_subtype_id do
+          text_at_xpath('ConditionSubtypeId')
         end
 
-        value :gift_wrap_level do
-          text_at_xpath('GiftWrapLevel')
+        value :condition_note do
+          text_at_xpath('ConditionNote')
         end
 
         value :scheduled_delivery_ends_at do
@@ -76,10 +100,6 @@ module MWS
 
         value :scheduled_delivery_starts_at do
           time_at_xpath('ScheduledDeliveryStartDate')
-        end
-
-        value :promotion_ids do
-          xpath('PromotionId').map(&:text)
         end
       end
     end
