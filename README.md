@@ -1,14 +1,14 @@
 # MWS Orders
 
-**MWS Orders** is a fully-featured Ruby interface to the [Amazon Marketplace
-Web Service (MWS) Orders API][1].
+**MWS Orders** is a full-featured Ruby interface to the [Amazon Marketplace Web
+Service (MWS) Orders API][1].
 
 ## Usage
 
 Instantiate a client:
 
 ```ruby
-client = MWS::Orders::Client.new('GB', 'aws_key', 'aws_secret', 'seller_id')
+client = MWS::Orders::Client.new('GB', 'key', 'secret', 'seller_id')
 ```
 
 [API methods are available on the client][2].
