@@ -57,8 +57,9 @@ module MWS
         end
 
         value :payment_execution_detail do
-          node = at_xpath('PaymentExecutionDetail')
-          PaymentExecutionDetail.new(node) if node
+          if node = at_xpath('PaymentExecutionDetail')
+            PaymentExecutionDetail.new(node)
+          end
         end
 
         value :payment_method do
