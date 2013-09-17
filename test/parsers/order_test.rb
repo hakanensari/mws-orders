@@ -77,4 +77,9 @@ class OrderParserTest < ParserTest
   def test_shipment_service_level_category
     assert_kind_of String, @order.shipment_service_level_category
   end
+
+  def test_no_shipping_adress
+    @order.shipping_address.document.remove
+    assert_nil @order.shipping_address
+  end
 end

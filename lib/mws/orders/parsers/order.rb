@@ -39,7 +39,9 @@ module MWS
         end
 
         value :shipping_address do
-          ShippingAddress.new(at_xpath('ShippingAddress'))
+          if node = at_xpath('ShippingAddress')
+            ShippingAddress.new(node)
+          end
         end
 
         value :total do
