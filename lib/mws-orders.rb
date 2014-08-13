@@ -1,29 +1,10 @@
-require 'cgi'
-require 'delegate'
-require 'forwardable'
-require 'time'
+require "peddler"
+require "mws/orders/parser"
 
-require 'money'
-require 'nokogiri'
-require 'peddler'
-require 'structure'
-
-require 'mws/orders/client'
-require 'mws/orders/helpers/structured_list'
-require 'mws/orders/helpers/parameters'
-require 'mws/orders/requests/base'
-require 'mws/orders/requests/orders'
-require 'mws/orders/requests/order_items'
-require 'mws/orders/requests/service_status'
-require 'mws/orders/parsers/base'
-require 'mws/orders/parsers/model'
-require 'mws/orders/parsers/collection'
-require 'mws/orders/parsers/orders'
-require 'mws/orders/parsers/order'
-require 'mws/orders/parsers/shipping_address'
-require 'mws/orders/parsers/payment_execution_detail'
-require 'mws/orders/parsers/payment_execution_detail_item'
-require 'mws/orders/parsers/order_items'
-require 'mws/orders/parsers/order_item'
-require 'mws/orders/parsers/service_status'
-require 'mws/orders/parsers/service_status_message'
+module MWS
+  def self.orders(*args)
+    Orders::Client.new(*args).tap do |client|
+      client.parser = Orders::Parser
+    end
+  end
+end

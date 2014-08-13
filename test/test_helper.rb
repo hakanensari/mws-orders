@@ -1,7 +1,16 @@
-$:.unshift(File.expand_path('../../lib', __FILE__))
-require 'mws-orders'
-require 'minitest/autorun'
-require 'minitest/pride'
-require 'pry'
+require "minitest/autorun"
+require "pry"
+require "mws-orders"
 
-include MWS::Orders
+I18n.enforce_available_locales = false
+
+class MiniTest::Test
+  include MWS::Orders
+
+  def load_xml_fixture(type)
+    file = File.expand_path("../fixtures/#{type}.xml", __FILE__)
+    body = File.read(file)
+
+    Nokogiri(body)
+  end
+end
