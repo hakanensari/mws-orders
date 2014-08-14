@@ -10,7 +10,7 @@ class TestIntegration < MiniTest::Test
     assert_kind_of ServiceStatus, @client.get_service_status
   end
 
-  def test_lists_orders
+  def test_lists_orders_and_order_items
     orders = @client.list_orders(created_after: Date.today - 30)
     refute_empty orders
 
@@ -18,6 +18,8 @@ class TestIntegration < MiniTest::Test
     refute_empty orders
 
     amazon_order_id = next_orders.to_a.sample.amazon_order_id
+    assert_kind_of MWS::Orders::Order, @client.get_order(amazon_order_id)
+
     order_items = @client.list_order_items(amazon_order_id)
     refute_empty order_items
   end

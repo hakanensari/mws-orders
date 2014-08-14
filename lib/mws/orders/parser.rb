@@ -6,9 +6,10 @@ require "mws/orders/service_status"
 module MWS
   module Orders
     class Parser
-      SERVICE_STATUS = /ServiceStatus/
-      ORDERS         = /Orders/
-      ORDER_ITEMS    = /OrderItems/
+      SERVICE_STATUS = /GetServiceStatus/
+      ORDER          = /GetOrder/
+      ORDERS         = /ListOrders/
+      ORDER_ITEMS    = /ListOrderItems/
 
       def self.parse(response, _)
         new(response).parse
@@ -24,10 +25,14 @@ module MWS
         case node.name
         when SERVICE_STATUS
           ServiceStatus.new(node)
+        when ORDER
+          Orders.new(node).first
         when ORDERS
           Orders.new(node)
         when ORDER_ITEMS
           OrderItems.new(node)
+        else
+          raise NotImplementedError
         end
       end
 
