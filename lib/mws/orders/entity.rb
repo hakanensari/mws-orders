@@ -1,11 +1,14 @@
 require "cgi"
 require "time"
 require "money"
+require "structure"
 require "mws/orders/document"
 
 module MWS
   module Orders
     class Entity < Document
+      include Structure
+
       def float_at_xpath(path)
         text = text_at_xpath(path)
         text.to_f if text

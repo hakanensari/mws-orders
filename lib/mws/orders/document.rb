@@ -1,10 +1,6 @@
-require "structure"
-
 module MWS
   module Orders
     class Document
-      include Structure
-
       attr_reader :node
 
       def initialize(node)
