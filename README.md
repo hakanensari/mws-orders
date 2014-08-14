@@ -13,37 +13,38 @@ require "mws-orders"
 client = MWS.orders
 ```
 
-Set up credentials [when instantiating or with environment variables](https://github.com/hakanensari/peddler).
+Set up credentials [when instantiating or with environment variables](https://github.com/hakanensari/peddler#quick-start).
 
 ### Orders
 
 List orders created or updated during a time frame you specify:
 
 ```ruby
-client.list_orders(created_after: 1.week.ago)
+orders = client.list_orders(created_after: 1.month.ago)
+puts orders.count # => 100
+puts orders.first # => #<MWS::Orders::Order amazon_order_id="123...
 )
 ```
 
 List the next page of orders:
 
 ```ruby
-client.list_orders_by_next_token(123)
+client.list_orders_by_next_token(orders.next_token)
 ```
 
 Get one or more orders based on their order numbers:
 
 ```ruby
-client.get_order("123-1234567-1234567")
+order = client.get_order("123-1234567-1234567")
+puts order # => #<MWS::Orders::Order amazon_order_id="123...
 ```
-
-All above queries will return an enumerable list of orders.
 
 ### Order Items
 
-List order items based on an order number you specify:
+List order items:
 
 ```ruby
-client.list_order_items("123-1234567-1234567")
+order_items = client.list_order_items("123-1234567-1234567")
 ```
 
 List the next page of order items:
@@ -52,7 +53,7 @@ List the next page of order items:
 client.list_order_items_by_next_token
 ```
 
-All above queries will return an enumerable list of order items.
+Orders and order items are represented by POROs that map one on one to the attributes returned by the API.
 
 ### Service Status
 
@@ -61,11 +62,3 @@ Check the operational status of the API:
 ```ruby
 client.get_service_status
 ```
-
-### Naming Conventions
-
-Request and response attribute names follow Amazon"s naming conventions with a
-few exceptions, where some Railsism has insidiuously crept in&mdash;e.g.
-`shipped_at` instead of `ShipDate`.
-
-[2]: https://github.com/papercavalier/mws-orders/blob/master/lib/mws/orders/client.rb
