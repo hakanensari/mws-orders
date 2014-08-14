@@ -40,5 +40,8 @@ module MWS
         root.children.find { |node| node.name.include?("Result") }
       end
     end
+
+    # Override Peddler's default Parser.
+    Client.parser = Parser
   end
 end
