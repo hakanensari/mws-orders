@@ -2,7 +2,7 @@ module MWS
   module Orders
     module Tokenable
       def next_token
-        node = xpath('NextToken')
+        node = xpath('NextToken').first
         node.text if node
       end
     end
