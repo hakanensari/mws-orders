@@ -9,7 +9,7 @@ Gem::Specification.new do |gem|
   gem.email       = ["me@hakanensari.com"]
   gem.homepage    = "http://github.com/hakanensari/mws-orders"
   gem.summary     = %q{Wraps the Amazon MWS Orders API}
-  gem.description = %q{A Ruby interface to the Amazon MWS Orders API}
+  gem.description = %q{A rich Ruby interface to the Amazon MWS Orders API}
   gem.license     = 'MIT'
 
   gem.files         = Dir.glob("lib/**/*") + %w(LICENSE README.md)
