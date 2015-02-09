@@ -1,8 +1,8 @@
 require "test_helper"
 
-class TestIntegration < MiniTest::Test
+class TestMWSOrders < MiniTest::Test
   def setup
-    skip if ENV['CI']
+    skip unless ENV['AWS_ACCESS_KEY_ID']
     @client = MWS.orders
   end
 
@@ -10,17 +10,18 @@ class TestIntegration < MiniTest::Test
     assert_kind_of ServiceStatus, @client.get_service_status
   end
 
-  def test_lists_orders_and_order_items
-    orders = @client.list_orders(created_after: Date.today - 30)
+  def test_lists_orders_and_their_items
+    orders = @client.list_orders(created_after: one_year_ago)
     refute_empty orders
-
-    next_orders = @client.list_orders_by_next_token(orders.next_token)
-    refute_empty orders
-
-    amazon_order_id = next_orders.to_a.sample.amazon_order_id
+    amazon_order_id = orders.to_a.sample.amazon_order_id
     assert_kind_of MWS::Orders::Order, @client.get_order(amazon_order_id)
-
     order_items = @client.list_order_items(amazon_order_id)
     refute_empty order_items
+  end
+
+  private
+
+  def one_year_ago
+    Date.today - 365
   end
 end
