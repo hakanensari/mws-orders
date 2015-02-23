@@ -5,6 +5,7 @@ gem "rake"
 
 group :development, :test do
   gem "minitest", require: false
+  gem "guard", require: false
   gem "guard-minitest", require: false
   gem "vcr", require: false
 end
