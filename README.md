@@ -1,5 +1,7 @@
 # MWS Orders
 
+[![Build Status](https://travis-ci.org/hakanensari/mws-orders.svg)](https://travis-ci.org/hakanensari/mws-orders)
+
 **MWS Orders** is a full-featured Ruby interface to the [Amazon Marketplace Web Service (MWS) Orders API](http://docs.developer.amazonservices.com/en_UK/orders/index.html). With the MWS Orders API, you can list orders created or updated during a time frame you specify or retrieve information about specific orders.
 
 To use Amazon MWS, you must have an eligible seller account.
