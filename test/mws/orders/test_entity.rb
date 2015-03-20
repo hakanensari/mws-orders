@@ -1,3 +1,4 @@
+# -*- encoding : utf-8
 require "test_helper"
 
 class TestEntity < MiniTest::Test
@@ -40,6 +41,7 @@ class TestEntity < MiniTest::Test
     EOF
     entity= build_entity(xml)
     money = entity.money_at_xpath("Price")
+
     assert_equal "¥1,000", money.format
   end
 
