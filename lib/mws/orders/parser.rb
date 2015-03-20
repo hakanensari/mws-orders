@@ -11,11 +11,7 @@ module MWS
       ORDERS         = /ListOrders/
       ORDER_ITEMS    = /ListOrderItems/
 
-      def self.parse(response, _)
-        new(response).parse
-      end
-
-      def initialize(response)
+      def initialize(response, _)
         @response = response
       end
 
