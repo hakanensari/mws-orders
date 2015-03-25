@@ -22,7 +22,8 @@ Set up credentials [when instantiating or with environment variables](https://gi
 List orders created or updated during a time frame you specify:
 
 ```ruby
-orders = client.list_orders(created_after: 1.month.ago)
+response = client.list_orders(created_after: 1.month.ago)
+orders = response.parse
 puts orders.count # => 100
 puts orders.first # => #<MWS::Orders::Order amazon_order_id="123...
 )
@@ -31,13 +32,14 @@ puts orders.first # => #<MWS::Orders::Order amazon_order_id="123...
 List the next page of orders:
 
 ```ruby
-client.list_orders_by_next_token(orders.next_token)
+client.list_orders_by_next_token(orders.next_token).parse
 ```
 
 Get one or more orders based on their order numbers:
 
 ```ruby
-order = client.get_order("123-1234567-1234567")
+response = client.get_order("123-1234567-1234567")
+order = response.parse
 puts order # => #<MWS::Orders::Order amazon_order_id="123...
 ```
 
@@ -46,13 +48,14 @@ puts order # => #<MWS::Orders::Order amazon_order_id="123...
 List order items:
 
 ```ruby
-order_items = client.list_order_items("123-1234567-1234567")
+response = client.list_order_items("123-1234567-1234567")
+order_items = response.parse
 ```
 
 List the next page of order items:
 
 ```ruby
-client.list_order_items_by_next_token
+client.list_order_items_by_next_token.parse
 ```
 
 Orders and order items are represented by POROs that map one on one to the attributes returned by the API.
@@ -62,5 +65,5 @@ Orders and order items are represented by POROs that map one on one to the attri
 Check the operational status of the API:
 
 ```ruby
-client.get_service_status
+client.get_service_status.parse
 ```
