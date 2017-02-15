@@ -82,4 +82,12 @@ class TestOrder < MiniTest::Test
     @order.xpath('ShippingAddress').remove
     assert_nil @order.shipping_address
   end
+
+  def test_latest_shipped_at
+    assert_kind_of Time, @order.latest_shipped_at
+  end
+
+  def test_latest_delivery_date
+    assert_kind_of Time, @order.latest_delivery_date
+  end
 end

@@ -49,6 +49,8 @@
         <BuyerEmail>5vlh04mgfmjh9h5@marketplace.amazon.com</BuyerEmail>
         <ShipmentServiceLevelCategory>Standard
         </ShipmentServiceLevelCategory>
+        <LatestShipDate>2012-10-15T07:59:59Z</LatestShipDate>
+        <LatestDeliveryDate>2012-10-15T07:59:59Z</LatestDeliveryDate>
       </Order>
       <Order>
         <ShipmentServiceLevelCategory>Standard
