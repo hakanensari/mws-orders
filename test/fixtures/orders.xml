@@ -41,7 +41,7 @@
               <Amount>10.00</Amount>
             </Payment>
             <PaymentMethod>GC</PaymentMethod>
-          </PaymentExecutionDetailItem>  
+          </PaymentExecutionDetailItem>
         </PaymentExecutionDetail>
         <PaymentMethod>COD</PaymentMethod>
         <MarketplaceId>ATVPDKIKX0DER</MarketplaceId>
@@ -49,6 +49,8 @@
         <BuyerEmail>5vlh04mgfmjh9h5@marketplace.amazon.com</BuyerEmail>
         <ShipmentServiceLevelCategory>Standard
         </ShipmentServiceLevelCategory>
+        <LatestShipDate>2012-10-15T07:59:59Z</LatestShipDate>
+        <LatestDeliveryDate>2012-10-15T07:59:59Z</LatestDeliveryDate>
       </Order>
       <Order>
         <ShipmentServiceLevelCategory>Standard
@@ -68,6 +70,7 @@
         <PurchaseDate>2012-10-11T14:15:55Z</PurchaseDate>
         <EarliestShipDate>2012-10-13T05:00:00Z</EarliestShipDate>
         <LatestShipDate>2012-10-15T07:59:59Z</LatestShipDate>
+        <LatestDeliveryDate>2012-10-15T07:59:59Z</LatestDeliveryDate>
         <OrderType>Preorder</OrderType>
         <NumberOfItemsUnshipped>0</NumberOfItemsUnshipped>
         <MarketplaceId>ATVPDKIKX0DER</MarketplaceId>

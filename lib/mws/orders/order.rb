@@ -108,6 +108,10 @@ module MWS
       attribute(:latest_shipped_at) do
         time_at_xpath("LatestShipDate")
       end
+
+      attribute(:latest_delivery_date) do
+        time_at_xpath('LatestDeliveryDate')
+      end
     end
   end
 end
