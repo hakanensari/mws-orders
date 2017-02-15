@@ -110,7 +110,7 @@ module MWS
       end
 
       attribute(:latest_delivery_date) do
-        time_at_xpath("LatestDeliveryDate")
+        time_at_xpath('LatestDeliveryDate')
       end
     end
   end
