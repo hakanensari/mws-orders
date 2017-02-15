@@ -1,8 +1,8 @@
-require "test_helper"
+require 'test_helper'
 
 class TestServiceStatus < MiniTest::Test
   def setup
-    node = load_xml_fixture("service_status").xpath("//xmlns:GetServiceStatusResult").first
+    node = load_xml_fixture('service_status').xpath('//xmlns:GetServiceStatusResult').first
     @status = ServiceStatus.new(node)
   end
 

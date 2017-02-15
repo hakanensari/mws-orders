@@ -15,9 +15,9 @@ module MWS
 
       def add_namespace(path)
         path
-          .split("/")
+          .split('/')
           .map { |attr| "xmlns:#{attr}" }
-          .join("/")
+          .join('/')
       end
     end
   end

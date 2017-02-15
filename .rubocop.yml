@@ -1,0 +1,10 @@
+ClassAndModuleChildren:
+  Enabled: false
+Documentation:
+  Enabled: false
+FileName:
+  Enabled: false
+LineLength:
+  Enabled: false
+MethodLength:
+  Enabled: false

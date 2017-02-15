@@ -1,8 +1,8 @@
-require "cgi"
-require "time"
-require "money"
-require "structure"
-require "mws/orders/document"
+require 'cgi'
+require 'time'
+require 'money'
+require 'structure'
+require 'mws/orders/document'
 
 module MWS
   module Orders
@@ -20,10 +20,11 @@ module MWS
       end
 
       def money_at_xpath(path)
-        return unless amount = float_at_xpath("#{path}/Amount")
+        amount = float_at_xpath("#{path}/Amount")
+        return unless amount
 
         currency_code = text_at_xpath("#{path}/CurrencyCode")
-        amount = amount * 100 unless currency_code == "JPY"
+        amount *= 100 unless currency_code == 'JPY'
 
         Money.new(amount, currency_code)
       end

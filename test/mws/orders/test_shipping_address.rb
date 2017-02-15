@@ -1,8 +1,8 @@
-require "test_helper"
+require 'test_helper'
 
 class TestShippingAddress < MiniTest::Test
   def setup
-    node = load_xml_fixture("orders").xpath("//xmlns:ShippingAddress").first
+    node = load_xml_fixture('orders').xpath('//xmlns:ShippingAddress').first
     @address = ShippingAddress.new(node)
   end
 

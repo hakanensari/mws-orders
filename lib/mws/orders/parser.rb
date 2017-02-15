@@ -1,7 +1,7 @@
-require "nokogiri"
-require "mws/orders/orders"
-require "mws/orders/order_items"
-require "mws/orders/service_status"
+require 'nokogiri'
+require 'mws/orders/orders'
+require 'mws/orders/order_items'
+require 'mws/orders/service_status'
 
 module MWS
   module Orders
@@ -38,7 +38,7 @@ module MWS
         xml = Nokogiri(@response.body)
         root = xml.children.first
 
-        root.children.find { |node| node.name.include?("Result") }
+        root.children.find { |node| node.name.include?('Result') }
       end
     end
 

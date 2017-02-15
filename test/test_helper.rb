@@ -1,6 +1,6 @@
-require "minitest/autorun"
-require "pry"
-require "mws-orders"
+require 'minitest/autorun'
+require 'pry'
+require 'mws-orders'
 
 I18n.enforce_available_locales = false
 

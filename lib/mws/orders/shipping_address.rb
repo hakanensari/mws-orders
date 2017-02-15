@@ -1,10 +1,10 @@
-require "mws/orders/entity"
+require 'mws/orders/entity'
 
 module MWS
   module Orders
     class ShippingAddress < Entity
       attribute(:name) do
-        text_at_xpath("Name")
+        text_at_xpath('Name')
       end
 
       attribute(:address_lines) do
@@ -12,23 +12,23 @@ module MWS
       end
 
       attribute(:city) do
-        text_at_xpath("City")
+        text_at_xpath('City')
       end
 
       attribute(:state_or_region) do
-        text_at_xpath("StateOrRegion")
+        text_at_xpath('StateOrRegion')
       end
 
       attribute(:postal_code) do
-        text_at_xpath("PostalCode")
+        text_at_xpath('PostalCode')
       end
 
       attribute(:country_code) do
-        text_at_xpath("CountryCode")
+        text_at_xpath('CountryCode')
       end
 
       attribute(:phone) do
-        text_at_xpath("Phone")
+        text_at_xpath('Phone')
       end
     end
   end

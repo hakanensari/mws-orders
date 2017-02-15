@@ -1,8 +1,8 @@
-require "test_helper"
+require 'test_helper'
 
 class TestPaymentExecutionDetailItem < MiniTest::Test
   def setup
-    node = load_xml_fixture("orders").xpath("//xmlns:PaymentExecutionDetailItem").first
+    node = load_xml_fixture('orders').xpath('//xmlns:PaymentExecutionDetailItem').first
     @pedi = PaymentExecutionDetailItem.new(node)
   end
 

@@ -1,2 +1,2 @@
-require "peddler"
-require "mws/orders/parser"
+require 'peddler'
+require 'mws/orders/parser'

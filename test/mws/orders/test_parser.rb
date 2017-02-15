@@ -1,4 +1,4 @@
-require "test_helper"
+require 'test_helper'
 
 class TestParser < MiniTest::Test
   def test_overrides_peddlers_parser

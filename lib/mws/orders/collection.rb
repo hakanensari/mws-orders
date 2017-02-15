@@ -1,4 +1,4 @@
-require "mws/orders/document"
+require 'mws/orders/document'
 
 module MWS
   module Orders
@@ -10,20 +10,18 @@ module MWS
       end
 
       def empty?
-        count == 0
+        count.zero?
       end
 
       def inspect
-        "#<#{self.class} #{
-          if count > 3
-            "[#{take(3).map(&:inspect).join(', ')}...]"
-          else
-            "[#{map(&:inspect).join(', ')}]"
-          end
-        }>"
+        "#<#{self.class} #{if count > 3
+                             "[#{take(3).map(&:inspect).join(', ')}...]"
+                           else
+                             "[#{map(&:inspect).join(', ')}]"
+                           end}>"
       end
 
-      alias_method :to_s, :inspect
+      alias to_s inspect
     end
   end
 end
