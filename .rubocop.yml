@@ -1,6 +1,9 @@
 AllCops:
   DisplayCopNames: true
   TargetRubyVersion: 2.3
+Lint/HandleExceptions:
+  Exclude:
+    - test/test_helper.rb
 Metrics/MethodLength:
   Enabled: false
 Style/Documentation:
