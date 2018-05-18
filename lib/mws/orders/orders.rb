@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'mws/orders/collection'
 require 'mws/orders/order'
 require 'mws/orders/tokenable'

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'nokogiri'
 require 'mws/orders/orders'
 require 'mws/orders/order_items'
@@ -11,7 +13,7 @@ module MWS
       ORDERS         = /ListOrders/
       ORDER_ITEMS    = /ListOrderItems/
 
-      def initialize(response, _)
+      def initialize(response, _encoding)
         @response = response
       end
 

@@ -1,15 +1,14 @@
+# frozen_string_literal: true
+
 source 'http://rubygems.org'
 gemspec
 
+gem 'minitest'
 gem 'rake'
-
-group :development, :test do
-  gem 'guard', require: false
-  gem 'guard-minitest', require: false
-  gem 'minitest', require: false
-end
+gem 'rubocop'
 
 group :development do
-  gem 'pry', require: false
-  gem 'rubocop', require: false
+  gem 'guard'
+  gem 'guard-minitest'
+  gem 'pry'
 end

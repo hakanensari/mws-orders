@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'mws/orders/entity'
 require 'mws/orders/invoice_data'
 

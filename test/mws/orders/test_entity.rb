@@ -1,44 +1,45 @@
-# -*- encoding : utf-8
+# frozen_string_literal: true
+
 require 'test_helper'
 
 class TestEntity < MiniTest::Test
   def test_parses_floats
-    xml = <<-EOF
+    xml = <<-XML
     <Float xmlns="example">10.0</Float>
-    EOF
+    XML
     entity = build_entity(xml)
     float = entity.float_at_xpath('Float')
     assert_equal 10.0, float
   end
 
   def test_parses_integers
-    xml = <<-EOF
+    xml = <<-XML
     <Integer xmlns="example">10</Integer>
-    EOF
+    XML
     entity = build_entity(xml)
     integer = entity.integer_at_xpath('Integer')
     assert_equal 10, integer
   end
 
   def test_parses_money
-    xml = <<-EOF
+    xml = <<-XML
     <Price xmlns="example">
       <CurrencyCode>USD</CurrencyCode>
       <Amount>10.00</Amount>
     </Price>
-    EOF
+    XML
     entity = build_entity(xml)
     money = entity.money_at_xpath('Price')
     assert_equal '$10.00', money.format
   end
 
   def test_parses_japanese_yen
-    xml = <<-EOF
+    xml = <<-XML
     <Price xmlns="example">
       <CurrencyCode>JPY</CurrencyCode>
       <Amount>1000.00</Amount>
     </Price>
-    EOF
+    XML
     entity = build_entity(xml)
     money = entity.money_at_xpath('Price')
 
@@ -46,39 +47,39 @@ class TestEntity < MiniTest::Test
   end
 
   def test_parses_text
-    xml = <<-EOF
+    xml = <<-XML
     <Text xmlns="example">Foo</Text>
-    EOF
+    XML
     entity = build_entity(xml)
     text = entity.text_at_xpath('Text')
     assert_equal 'Foo', text
   end
 
   def test_strips_text
-    xml = <<-EOF
+    xml = <<-XML
     <Text xmlns="example">Foo
 
     </Text>
-    EOF
+    XML
     entity = build_entity(xml)
     text = entity.text_at_xpath('Text')
     assert_equal 'Foo', text
   end
 
   def test_parses_time
-    xml = <<-EOF
+    xml = <<-XML
     <Time xmlns="example">2013-01-01T01:30:00.000-06:00</Time>
-    EOF
+    XML
     entity = build_entity(xml)
     time = entity.time_at_xpath('Time')
     assert_kind_of Time, time
   end
 
   def test_handles_nil_values
-    xml = <<-EOF
+    xml = <<-XML
     <Foo xmlns="example">
     </Foo>
-    EOF
+    XML
     entity = build_entity(xml)
 
     assert_nil entity.float_at_xpath('Bar')

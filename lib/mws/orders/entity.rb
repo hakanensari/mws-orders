@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'cgi'
 require 'time'
 require 'money'
@@ -11,12 +13,12 @@ module MWS
 
       def float_at_xpath(path)
         text = text_at_xpath(path)
-        text.to_f if text
+        text&.to_f
       end
 
       def integer_at_xpath(path)
         text = text_at_xpath(path)
-        text.to_i if text
+        text&.to_i
       end
 
       def money_at_xpath(path)
@@ -36,7 +38,7 @@ module MWS
 
       def text_at_xpath(path)
         node = xpath(path).first
-        node.text.strip if node
+        node&.text&.strip
       end
     end
   end
