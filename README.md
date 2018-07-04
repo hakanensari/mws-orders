@@ -12,10 +12,11 @@ Create a client:
 
 ```ruby
 require "mws-orders"
-client = MWS.orders
+client = MWS.orders(marketplace: "ATVPDKIKX0DER",
+                    merchant_id: "123")
 ```
 
-Set up credentials [when instantiating or with environment variables](https://github.com/hakanensari/peddler#quick-start).
+Set up credentials [when instantiating or with environment variables](https://github.com/hakanensari/peddler#usage).
 
 ### Orders
 
