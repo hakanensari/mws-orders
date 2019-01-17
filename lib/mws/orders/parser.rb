@@ -8,6 +8,8 @@ require 'mws/orders/service_status'
 module MWS
   module Orders
     class Parser
+      include ::Peddler::Headers
+
       SERVICE_STATUS = /GetServiceStatus/
       ORDER          = /GetOrder/
       ORDERS         = /ListOrders/
@@ -32,6 +34,10 @@ module MWS
         else
           raise NotImplementedError
         end
+      end
+
+      def headers
+        @response.headers
       end
 
       private
