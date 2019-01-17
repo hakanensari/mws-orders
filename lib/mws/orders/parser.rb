@@ -10,11 +10,6 @@ module MWS
     class Parser
       include ::Peddler::Headers
 
-      SERVICE_STATUS = /GetServiceStatus/
-      ORDER          = /GetOrder/
-      ORDERS         = /ListOrders/
-      ORDER_ITEMS    = /ListOrderItems/
-
       def initialize(response, _encoding)
         @response = response
       end
@@ -23,13 +18,13 @@ module MWS
         node = find_result_node
 
         case node.name
-        when SERVICE_STATUS
+        when /GetServiceStatus/
           ServiceStatus.new(node)
-        when ORDER
+        when /GetOrder/
           Orders.new(node).first
-        when ORDERS
+        when /ListOrders/
           Orders.new(node)
-        when ORDER_ITEMS
+        when /ListOrderItems/
           OrderItems.new(node)
         else
           raise NotImplementedError
