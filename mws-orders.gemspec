@@ -22,5 +22,5 @@ Gem::Specification.new do |gem|
   gem.add_dependency 'nokogiri', '~> 1.5'
   gem.add_dependency 'peddler', '~> 2.0'
   gem.add_dependency 'structure', '~> 1.0'
-  gem.required_ruby_version = '>= 2.3'
+  gem.required_ruby_version = '>= 2.4'
 end
