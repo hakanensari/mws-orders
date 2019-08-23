@@ -30,10 +30,10 @@ class TestEntity < MiniTest::Test
     XML
     entity = build_entity(xml)
     money = entity.money_at_xpath('Price')
-    assert_equal '$10.00', money.format
+    assert_equal 1000, money.fractional
   end
 
-  def test_parses_japanese_yen
+  def test_parses_yen
     xml = <<-XML
     <Price xmlns="example">
       <CurrencyCode>JPY</CurrencyCode>
@@ -42,8 +42,7 @@ class TestEntity < MiniTest::Test
     XML
     entity = build_entity(xml)
     money = entity.money_at_xpath('Price')
-
-    assert_equal '¥1,000', money.format
+    assert_equal 1000, money.fractional
   end
 
   def test_parses_text
