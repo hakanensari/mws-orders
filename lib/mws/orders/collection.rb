@@ -15,12 +15,12 @@ module MWS
         count.zero?
       end
 
+      def attributes
+        map(&:attributes)
+      end
+
       def inspect
-        "#<#{self.class} #{if count > 3
-                             "[#{take(3).map(&:inspect).join(', ')}...]"
-                           else
-                             "[#{map(&:inspect).join(', ')}]"
-                           end}>"
+        "#<#{self.class.name} #{to_a}>"
       end
 
       alias to_s inspect
