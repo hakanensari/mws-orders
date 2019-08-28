@@ -112,6 +112,10 @@ module MWS
       attribute(:latest_delivered_at) do
         time_at_xpath('LatestDeliveryDate')
       end
+
+      def to_s
+        amazon_order_id
+      end
     end
   end
 end

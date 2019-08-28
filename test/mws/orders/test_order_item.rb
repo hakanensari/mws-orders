@@ -67,4 +67,8 @@ class TestOrderItemTest < MiniTest::Test
   def test_gift_wrap_level
     assert_kind_of String, @order_item.gift_wrap_level
   end
+
+  def test_to_s
+    assert_equal @order_item.order_item_id, @order_item.to_s
+  end
 end

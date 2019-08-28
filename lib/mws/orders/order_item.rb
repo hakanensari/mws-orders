@@ -105,6 +105,10 @@ module MWS
       attribute(:scheduled_delivery_starts_at) do
         time_at_xpath('ScheduledDeliveryStartDate')
       end
+
+      def to_s
+        order_item_id
+      end
     end
   end
 end

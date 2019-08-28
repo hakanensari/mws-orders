@@ -92,4 +92,8 @@ class TestOrder < MiniTest::Test
   def test_latest_delivered_at
     assert_kind_of Time, @order.latest_delivered_at
   end
+
+  def test_to_s
+    assert_equal @order.amazon_order_id, @order.to_s
+  end
 end
