@@ -9,7 +9,7 @@ module MiniTest
   class Test
     include MWS::Orders
 
-    def load_xml_fixture(type)
+    def load_fixture(type)
       file = File.expand_path("../fixtures/#{type}.xml", __FILE__)
       body = File.read(file)
 

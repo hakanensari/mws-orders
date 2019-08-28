@@ -4,7 +4,7 @@ require 'test_helper'
 
 class TestOrderItems < MiniTest::Test
   def setup
-    node = load_xml_fixture('order_items').xpath('//xmlns:ListOrderItemsResult')
+    node = load_fixture('order_items').xpath('//xmlns:ListOrderItemsResult')
     @order_items = OrderItems.new(node)
   end
 

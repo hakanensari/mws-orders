@@ -4,7 +4,7 @@ require 'test_helper'
 
 class TestMessage < MiniTest::Test
   def setup
-    node = load_xml_fixture('service_status').xpath('//xmlns:Message').first
+    node = load_fixture('service_status').xpath('//xmlns:Message').first
     @message = Message.new(node)
   end
 
