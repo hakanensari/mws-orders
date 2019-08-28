@@ -1,12 +1,5 @@
+inherit_from: ".rubocop_todo.yml"
+
 AllCops:
   DisplayCopNames: true
   TargetRubyVersion: 2.4
-Lint/HandleExceptions:
-  Exclude:
-    - test/test_helper.rb
-Metrics/MethodLength:
-  Max: 13
-Naming/FileName:
-  Enabled: false
-Style/Documentation:
-  Enabled: false
