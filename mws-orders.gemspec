@@ -17,9 +17,13 @@ Gem::Specification.new do |gem|
   gem.test_files    = Dir.glob('test/**/*')
   gem.require_paths = ['lib']
 
-  gem.add_dependency 'money', '~> 6.0'
-  gem.add_dependency 'nokogiri', '~> 1.5'
-  gem.add_dependency 'peddler', '~> 2.0'
-  gem.add_dependency 'structure', '~> 1.0'
+  gem.add_runtime_dependency 'money', '~> 6.0'
+  gem.add_runtime_dependency 'nokogiri', '~> 1.0'
+  gem.add_runtime_dependency 'peddler', '~> 2.0'
+  gem.add_runtime_dependency 'structure', '~> 2.0'
+  gem.add_development_dependency 'minitest'
+  gem.add_development_dependency 'rake'
+  gem.add_development_dependency 'rubocop'
+
   gem.required_ruby_version = '>= 2.4'
 end
