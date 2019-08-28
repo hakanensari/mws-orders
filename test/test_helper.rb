@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require 'minitest/autorun'
+require 'mws/orders/parser'
 
 I18n.enforce_available_locales = false
 

@@ -11,9 +11,9 @@ To use Amazon MWS, you must have an eligible seller account.
 Create a client:
 
 ```ruby
-require "mws-orders"
-client = MWS.orders(marketplace: "ATVPDKIKX0DER",
-                    merchant_id: "123")
+require 'mws/orders/parser'
+client = MWS.orders(marketplace: 'ATVPDKIKX0DER',
+                    merchant_id: '123')
 ```
 
 Set up credentials [when instantiating or with environment variables](https://github.com/hakanensari/peddler#usage).
@@ -39,7 +39,7 @@ client.list_orders_by_next_token(orders.next_token).parse
 Get one or more orders based on their order numbers:
 
 ```ruby
-response = client.get_order("123-1234567-1234567")
+response = client.get_order('123-1234567-1234567')
 order = response.parse
 puts order # => #<MWS::Orders::Order amazon_order_id="123...
 ```
@@ -49,7 +49,7 @@ puts order # => #<MWS::Orders::Order amazon_order_id="123...
 List order items:
 
 ```ruby
-response = client.list_order_items("123-1234567-1234567")
+response = client.list_order_items('123-1234567-1234567')
 order_items = response.parse
 ```
 
