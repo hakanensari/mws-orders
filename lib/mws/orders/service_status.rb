@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require 'mws/orders/entity'
-require 'mws/orders/service_status_message'
+require 'mws/orders/message'
 
 module MWS
   module Orders
@@ -19,7 +19,7 @@ module MWS
       end
 
       attribute(:messages) do
-        xpath('Messages/Message').map { |node| ServiceStatusMessage.new(node) }
+        xpath('Messages/Message').map { |node| Message.new(node) }
       end
     end
   end

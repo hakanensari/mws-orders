@@ -4,7 +4,7 @@ require 'mws/orders/entity'
 
 module MWS
   module Orders
-    class ServiceStatusMessage < Entity
+    class Message < Entity
       attribute(:locale) do
         text_at_xpath('Locale')
       end
