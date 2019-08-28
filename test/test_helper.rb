@@ -1,12 +1,6 @@
 # frozen_string_literal: true
 
 require 'minitest/autorun'
-require 'mws-orders'
-
-begin
-  require 'pry'
-rescue LoadError
-end
 
 I18n.enforce_available_locales = false
 

@@ -6,7 +6,3 @@ gemspec
 gem 'minitest'
 gem 'rake'
 gem 'rubocop'
-
-group :development do
-  gem 'pry'
-end
