@@ -4,6 +4,7 @@ require 'nokogiri'
 require 'mws/orders/orders'
 require 'mws/orders/order_items'
 require 'mws/orders/service_status'
+require 'peddler'
 
 module MWS
   module Orders
@@ -15,19 +16,12 @@ module MWS
       end
 
       def parse
-        node = find_result_node
-
-        case node.name
-        when /GetServiceStatus/
-          ServiceStatus.new(node)
-        when /GetOrder/
-          Orders.new(node).first
-        when /ListOrders/
-          Orders.new(node)
-        when /ListOrderItems/
-          OrderItems.new(node)
-        else
-          raise NotImplementedError
+        case result_node.name
+        when /GetOrder/         then order
+        when /GetServiceStatus/ then service_status
+        when /ListOrders/       then orders
+        when /ListOrderItems/   then order_items
+        else raise NotImplementedError
         end
       end
 
@@ -45,8 +39,28 @@ module MWS
 
       private
 
+      def order
+        orders.first
+      end
+
+      def orders
+        Orders.new(result_node)
+      end
+
+      def order_items
+        OrderItems.new(result_node)
+      end
+
+      def service_status
+        ServiceStatus.new(result_node)
+      end
+
+      def result_node
+        @result_node ||= find_result_node
+      end
+
       def find_result_node
-        xml = Nokogiri(@response.body)
+        xml = Nokogiri(body)
         root = xml.children.first
 
         root.children.find { |node| node.name.include?('Result') }
