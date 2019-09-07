@@ -4,13 +4,14 @@ require 'mws/orders/entity'
 
 module MWS
   module Orders
+    # https://docs.developer.amazonservices.com/en_US/orders-2013-09-01/MWS_GetServiceStatus.html
     class Message < Entity
       attribute(:locale) do
-        text_at_xpath('Locale')
+        string('Locale')
       end
 
       attribute(:text) do
-        text_at_xpath('Text')
+        string('Text')
       end
     end
   end

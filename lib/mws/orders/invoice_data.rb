@@ -4,21 +4,22 @@ require 'mws/orders/entity'
 
 module MWS
   module Orders
+    # https://docs.developer.amazonservices.com/en_US/orders-2013-09-01/Orders_Datatypes.html#InvoiceData
     class InvoiceData < Entity
       attribute(:invoice_requirement) do
-        text_at_xpath('InvoiceRequirement')
+        string('InvoiceRequirement')
       end
 
       attribute(:buyer_selected_invoice_category) do
-        text_at_xpath('BuyerSelectedInvoiceCategory')
+        string('BuyerSelectedInvoiceCategory')
       end
 
       attribute(:invoice_title) do
-        text_at_xpath('InvoiceTitle')
+        string('InvoiceTitle')
       end
 
       attribute(:invoice_information) do
-        text_at_xpath('InvoiceInformation')
+        string('InvoiceInformation')
       end
     end
   end

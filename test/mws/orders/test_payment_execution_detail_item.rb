@@ -4,16 +4,15 @@ require 'test_helper'
 
 class TestPaymentExecutionDetailItem < MiniTest::Test
   def setup
-    node =
-      load_fixture('orders').xpath('//xmlns:PaymentExecutionDetailItem').first
-    @pedi = PaymentExecutionDetailItem.new(node)
+    node = load_fixture('orders').at_xpath('//xmlns:PaymentExecutionDetailItem')
+    @item = PaymentExecutionDetailItem.new(node)
   end
 
   def test_payment
-    assert_kind_of Money, @pedi.payment
+    assert_kind_of Money, @item.payment
   end
 
   def test_payment_method
-    assert_kind_of String, @pedi.payment_method
+    assert_kind_of String, @item.payment_method
   end
 end

@@ -4,13 +4,14 @@ require 'mws/orders/entity'
 
 module MWS
   module Orders
+    # https://docs.developer.amazonservices.com/en_US/orders-2013-09-01/Orders_Datatypes.html#PaymentExecutionDetailItem
     class PaymentExecutionDetailItem < Entity
       attribute(:payment) do
-        money_at_xpath('Payment')
+        money('Payment')
       end
 
       attribute(:payment_method) do
-        text_at_xpath('PaymentMethod')
+        string('PaymentMethod')
       end
     end
   end

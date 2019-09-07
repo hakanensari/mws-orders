@@ -5,17 +5,18 @@ require 'mws/orders/message'
 
 module MWS
   module Orders
+    # https://docs.developer.amazonservices.com/en_US/orders-2013-09-01/MWS_GetServiceStatus.html
     class ServiceStatus < Entity
       attribute(:status) do
-        text_at_xpath('Status')
+        string('Status')
       end
 
       attribute(:timestamp) do
-        time_at_xpath('Timestamp')
+        time('Timestamp')
       end
 
       attribute(:message_id) do
-        text_at_xpath('MessageId')
+        string('MessageId')
       end
 
       attribute(:messages) do

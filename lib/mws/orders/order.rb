@@ -1,116 +1,165 @@
 # frozen_string_literal: true
 
 require 'mws/orders/entity'
-require 'mws/orders/shipping_address'
-require 'mws/orders/payment_execution_detail'
+require 'mws/orders/address'
+require 'mws/orders/buyer_tax_info'
+require 'mws/orders/payment_execution_detail_item'
 
 module MWS
   module Orders
+    # https://docs.developer.amazonservices.com/en_US/orders-2013-09-01/Orders_Datatypes.html#Order
     class Order < Entity
       attribute(:amazon_order_id) do
-        text_at_xpath('AmazonOrderId')
+        string('AmazonOrderId')
       end
 
       attribute(:seller_order_id) do
-        text_at_xpath('SellerOrderId')
+        string('SellerOrderId')
       end
 
       attribute(:purchased_at) do
-        time_at_xpath('PurchaseDate')
+        time('PurchaseDate')
       end
 
       attribute(:last_updated_at) do
-        time_at_xpath('LastUpdateDate')
+        time('LastUpdateDate')
       end
 
       attribute(:status) do
-        text_at_xpath('OrderStatus')
+        string('OrderStatus')
       end
 
       attribute(:fulfillment_channel) do
-        text_at_xpath('FulfillmentChannel')
+        string('FulfillmentChannel')
       end
 
       attribute(:sales_channel) do
-        text_at_xpath('SalesChannel')
+        string('SalesChannel')
       end
 
       attribute(:order_channel) do
-        text_at_xpath('OrderChannel')
+        string('OrderChannel')
       end
 
       attribute(:ship_service_level) do
-        text_at_xpath('ShipServiceLevel')
+        string('ShipServiceLevel')
       end
 
       attribute(:shipping_address) do
-        node = xpath('ShippingAddress').first
-        ShippingAddress.new(node) if node
+        entity('ShippingAddress', Address)
       end
 
       attribute(:total) do
-        money_at_xpath('OrderTotal')
+        money('OrderTotal')
       end
 
       attribute(:number_of_items_shipped) do
-        integer_at_xpath('NumberOfItemsShipped')
+        integer('NumberOfItemsShipped')
       end
 
       attribute(:number_of_items_unshipped) do
-        integer_at_xpath('NumberOfItemsUnshipped')
+        integer('NumberOfItemsUnshipped')
       end
 
       attribute(:payment_execution_detail) do
-        node = xpath('PaymentExecutionDetail').first
-        PaymentExecutionDetail.new(node) if node
+        xpath('PaymentExecutionDetail/PaymentExecutionDetailItem')
+          .map { |node| PaymentExecutionDetailItem.new(node) }
       end
 
       attribute(:payment_method) do
-        text_at_xpath('PaymentMethod')
+        string('PaymentMethod')
+      end
+
+      attribute(:payment_method_details) do
+        xpath('PaymentMethodDetails/PaymentMethodDetail').map(&:text)
+      end
+
+      attribute(:replacement_order?) do
+        boolean('IsReplacementOrder')
+      end
+
+      attribute(:replaced_order_id) do
+        string('ReplacedOrderId')
       end
 
       attribute(:marketplace_id) do
-        text_at_xpath('MarketplaceId')
-      end
-
-      attribute(:buyer_name) do
-        text_at_xpath('BuyerName')
+        string('MarketplaceId')
       end
 
       attribute(:buyer_email) do
-        text_at_xpath('BuyerEmail')
+        string('BuyerEmail')
+      end
+
+      attribute(:buyer_name) do
+        string('BuyerName')
+      end
+
+      attribute(:buyer_county) do
+        string('BuyerCounty')
+      end
+
+      attribute(:buyer_tax_info) do
+        entity('BuyerTaxInfo', BuyerTaxInfo)
       end
 
       attribute(:shipment_service_level_category) do
-        text_at_xpath('ShipmentServiceLevelCategory')
-      end
-
-      attribute(:cba_displayable_shipping_label) do
-        text_at_xpath('CbaDisplayableShippingLabel')
+        string('ShipmentServiceLevelCategory')
       end
 
       attribute(:shipped_by_amazon_tfm) do
-        text_at_xpath('ShippedByAmazonTFM')
+        string('ShippedByAmazonTFM')
       end
 
       attribute(:tfm_shipment_status) do
-        text_at_xpath('TFMShipmentStatus')
+        string('TFMShipmentStatus')
+      end
+
+      attribute(:easy_ship_shipment_status) do
+        string('EasyShipShipmentStatus')
       end
 
       attribute(:type) do
-        text_at_xpath('OrderType')
+        string('OrderType')
       end
 
       attribute(:earliest_shipped_at) do
-        time_at_xpath('EarliestShipDate')
+        time('EarliestShipDate')
       end
 
       attribute(:latest_shipped_at) do
-        time_at_xpath('LatestShipDate')
+        time('LatestShipDate')
+      end
+
+      attribute(:earliest_delivered_at) do
+        time('LatestDeliveryDate')
       end
 
       attribute(:latest_delivered_at) do
-        time_at_xpath('LatestDeliveryDate')
+        time('LatestDeliveryDate')
+      end
+
+      attribute(:business_order?) do
+        boolean('IsBusinessOrder')
+      end
+
+      attribute(:purchase_order_number) do
+        string('PurchaseOrderNumber')
+      end
+
+      attribute(:prime?) do
+        boolean('IsPrime')
+      end
+
+      attribute(:premium?) do
+        boolean('IsPremiumOrder')
+      end
+
+      attribute(:promise_response_due_at) do
+        time('PromiseResponseDueDate')
+      end
+
+      attribute(:estimated_ship_date_set?) do
+        boolean('IsEstimatedShipDateSet')
       end
 
       def to_s

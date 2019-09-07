@@ -4,6 +4,7 @@ require 'mws/orders/document'
 
 module MWS
   module Orders
+    # Returns a list of parsed objects
     class Collection < Document
       include Enumerable
 

@@ -2,6 +2,7 @@
 
 module MWS
   module Orders
+    # Wraps a Nokogiri node
     class Document
       attr_reader :node
 
@@ -13,13 +14,14 @@ module MWS
         node.xpath(add_namespace(path))
       end
 
+      def at_xpath(path)
+        node.at_xpath(add_namespace(path))
+      end
+
       private
 
       def add_namespace(path)
-        path
-          .split('/')
-          .map { |attr| "xmlns:#{attr}" }
-          .join('/')
+        path.split('/').map { |attr| "xmlns:#{attr}" }.join('/')
       end
     end
   end

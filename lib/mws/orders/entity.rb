@@ -8,37 +8,48 @@ require 'mws/orders/document'
 
 module MWS
   module Orders
+    # A parsed object
     class Entity < Document
       include Structure
 
-      def float_at_xpath(path)
-        text = text_at_xpath(path)
-        text&.to_f
+      def boolean(path)
+        string(path) == 'true'
       end
 
-      def integer_at_xpath(path)
-        text = text_at_xpath(path)
-        text&.to_i
+      def entities(path, klass)
+        xpath(path).map { |node| klass.new(node) }
       end
 
-      def money_at_xpath(path)
-        amount = float_at_xpath("#{path}/Amount")
+      def entity(path, klass)
+        node = at_xpath(path)
+        klass.new(node) if node
+      end
+
+      def float(path)
+        string(path)&.to_f
+      end
+
+      def integer(path)
+        string(path)&.to_i
+      end
+
+      def money(path)
+        amount = float("#{path}/Amount")
         return unless amount
 
-        currency_code = text_at_xpath("#{path}/CurrencyCode")
+        currency_code = string("#{path}/CurrencyCode")
         amount *= 100 unless currency_code == 'JPY'
 
         Money.new(amount, currency_code)
       end
 
-      def time_at_xpath(path)
-        text = text_at_xpath(path)
-        Time.parse(CGI.unescape(text)) if text
+      def string(path)
+        at_xpath(path)&.text&.strip
       end
 
-      def text_at_xpath(path)
-        node = xpath(path).first
-        node&.text&.strip
+      def time(path)
+        text = string(path)
+        Time.parse(CGI.unescape(text)) if text
       end
     end
   end

@@ -3,12 +3,40 @@
 require 'test_helper'
 
 class TestEntity < MiniTest::Test
+  def test_parses_booleans
+    xml = <<-XML
+    <Boolean xmlns="example">true</Boolean>
+    XML
+    boolean = build_entity(xml).boolean('Boolean')
+    assert_equal true, boolean
+  end
+
+  def test_parses_entities
+    klass = Class.new(Entity)
+    xml = <<-XML
+    <Type xmlns="example"><Class xmlns="example">Foo</Class><Class xmlns="example">Bar</Class></Type>
+    XML
+    entities = build_entity(xml).entities('Type', klass)
+    refute_empty entities
+    entities.each do |entity|
+      assert_kind_of klass, entity
+    end
+  end
+
+  def test_parses_entity
+    klass = Class.new(Entity)
+    xml = <<-XML
+    <Type xmlns="example"><Class xmlns="example">Foo</Class></Type>
+    XML
+    entity = build_entity(xml).entity('Type', klass)
+    assert_kind_of klass, entity
+  end
+
   def test_parses_floats
     xml = <<-XML
     <Float xmlns="example">10.0</Float>
     XML
-    entity = build_entity(xml)
-    float = entity.float_at_xpath('Float')
+    float = build_entity(xml).float('Float')
     assert_equal 10.0, float
   end
 
@@ -16,8 +44,7 @@ class TestEntity < MiniTest::Test
     xml = <<-XML
     <Integer xmlns="example">10</Integer>
     XML
-    entity = build_entity(xml)
-    integer = entity.integer_at_xpath('Integer')
+    integer = build_entity(xml).integer('Integer')
     assert_equal 10, integer
   end
 
@@ -28,8 +55,7 @@ class TestEntity < MiniTest::Test
       <Amount>10.00</Amount>
     </Price>
     XML
-    entity = build_entity(xml)
-    money = entity.money_at_xpath('Price')
+    money = build_entity(xml).money('Price')
     assert_equal 1000, money.fractional
   end
 
@@ -40,37 +66,33 @@ class TestEntity < MiniTest::Test
       <Amount>1000.00</Amount>
     </Price>
     XML
-    entity = build_entity(xml)
-    money = entity.money_at_xpath('Price')
+    money = build_entity(xml).money('Price')
     assert_equal 1000, money.fractional
   end
 
-  def test_parses_text
+  def test_parses_string
     xml = <<-XML
-    <Text xmlns="example">Foo</Text>
+    <String xmlns="example">Foo</String>
     XML
-    entity = build_entity(xml)
-    text = entity.text_at_xpath('Text')
-    assert_equal 'Foo', text
+    string = build_entity(xml).string('String')
+    assert_equal 'Foo', string
   end
 
-  def test_strips_text
+  def test_strips_string
     xml = <<-XML
-    <Text xmlns="example">Foo
+    <String xmlns="example">Foo
 
-    </Text>
+    </String>
     XML
-    entity = build_entity(xml)
-    text = entity.text_at_xpath('Text')
-    assert_equal 'Foo', text
+    string = build_entity(xml).string('String')
+    assert_equal 'Foo', string
   end
 
   def test_parses_time
     xml = <<-XML
     <Time xmlns="example">2013-01-01T01:30:00.000-06:00</Time>
     XML
-    entity = build_entity(xml)
-    time = entity.time_at_xpath('Time')
+    time = build_entity(xml).time('Time')
     assert_kind_of Time, time
   end
 
@@ -81,11 +103,11 @@ class TestEntity < MiniTest::Test
     XML
     entity = build_entity(xml)
 
-    assert_nil entity.float_at_xpath('Bar')
-    assert_nil entity.integer_at_xpath('Bar')
-    assert_nil entity.money_at_xpath('Bar')
-    assert_nil entity.time_at_xpath('Bar')
-    assert_nil entity.text_at_xpath('Bar')
+    assert_nil entity.float('Bar')
+    assert_nil entity.integer('Bar')
+    assert_nil entity.money('Bar')
+    assert_nil entity.time('Bar')
+    assert_nil entity.string('Bar')
   end
 
   private

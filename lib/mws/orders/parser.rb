@@ -7,9 +7,14 @@ require 'mws/orders/service_status'
 require 'peddler'
 
 module MWS
+  # With the MWS Orders API, you can list orders created or updated during a
+  # time frame you specify or retrieve information about specific orders.
   module Orders
+    # Overrides the default parser in Peddler
     class Parser
       include ::Peddler::Headers
+
+      attr_reader :response
 
       def initialize(response, _encoding)
         @response = response
@@ -23,18 +28,6 @@ module MWS
         when /ListOrderItems/   then order_items
         else raise NotImplementedError
         end
-      end
-
-      def headers
-        @response.headers
-      end
-
-      def status_code
-        @response.status
-      end
-
-      def body
-        @response.body
       end
 
       private
@@ -60,14 +53,13 @@ module MWS
       end
 
       def find_result_node
-        xml = Nokogiri(body)
+        xml = Nokogiri(response.body)
         root = xml.children.first
 
         root.children.find { |node| node.name.include?('Result') }
       end
     end
 
-    # Override Peddler's default Parser.
     Client.parser = Parser
   end
 end

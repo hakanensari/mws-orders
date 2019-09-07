@@ -12,10 +12,7 @@ Gem::Specification.new do |gem|
   gem.homepage    = 'https://github.com/hakanensari/mws-orders'
   gem.summary     = 'A Ruby wrapper for the Amazon MWS Orders API'
   gem.license     = 'MIT'
-
-  gem.files         = Dir.glob('lib/**/*') + %w[LICENSE README.md]
-  gem.test_files    = Dir.glob('test/**/*')
-  gem.require_paths = ['lib']
+  gem.files       = Dir.glob('lib/**/*') + %w[LICENSE README.md]
 
   gem.add_runtime_dependency 'money', '~> 6.0'
   gem.add_runtime_dependency 'nokogiri', '~> 1.0'

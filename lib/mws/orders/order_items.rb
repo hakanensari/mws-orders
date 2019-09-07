@@ -6,6 +6,7 @@ require 'mws/orders/tokenable'
 
 module MWS
   module Orders
+    # https://docs.developer.amazonservices.com/en_US/orders-2013-09-01/Orders_ListOrderItems.html
     class OrderItems < Collection
       include Tokenable
 
