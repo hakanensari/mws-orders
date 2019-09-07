@@ -11,7 +11,7 @@ module MWS
       include Tokenable
 
       def each
-        xpath('Orders/Order').map { |node| yield Order.new(node) }
+        xpath('Orders/Order').each { |node| yield Order.new(node) }
       end
     end
   end

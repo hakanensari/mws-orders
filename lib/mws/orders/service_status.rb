@@ -20,7 +20,7 @@ module MWS
       end
 
       attribute(:messages) do
-        xpath('Messages/Message').map { |node| Message.new(node) }
+        entities('Messages/Message', Message)
       end
     end
   end

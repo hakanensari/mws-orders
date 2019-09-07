@@ -62,8 +62,8 @@ module MWS
       end
 
       attribute(:payment_execution_detail) do
-        xpath('PaymentExecutionDetail/PaymentExecutionDetailItem')
-          .map { |node| PaymentExecutionDetailItem.new(node) }
+        entities('PaymentExecutionDetail/PaymentExecutionDetailItem',
+                 PaymentExecutionDetailItem)
       end
 
       attribute(:payment_method) do
