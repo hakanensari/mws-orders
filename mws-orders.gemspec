@@ -10,7 +10,9 @@ Gem::Specification.new do |gem|
   gem.authors     = ['Hakan Ensari']
   gem.email       = ['me@hakanensari.com']
   gem.homepage    = 'https://github.com/hakanensari/mws-orders'
-  gem.summary     = 'A Ruby wrapper for the Amazon MWS Orders API'
+  gem.summary     = <<-SUMMARY
+    A Ruby interface to the Amazon MWS Orders API, built on Peddler
+  SUMMARY
   gem.license     = 'MIT'
   gem.files       = Dir.glob('lib/**/*') + %w[LICENSE README.md]
 

@@ -1,6 +1,6 @@
 # MWS Orders
 
-[![Build Status](https://travis-ci.org/hakanensari/mws-orders.svg)](https://travis-ci.org/hakanensari/mws-orders)
+[![CircleCI](https://circleci.com/gh/hakanensari/mws-orders.svg?style=svg)](https://circleci.com/gh/hakanensari/mws-orders)
 
 **MWS Orders** is a full-featured Ruby interface to the [Amazon Marketplace Web Service (MWS) Orders API](http://docs.developer.amazonservices.com/en_UK/orders/index.html). With the MWS Orders API, you can list orders created or updated during a time frame you specify or retrieve information about specific orders.
 
@@ -26,7 +26,7 @@ List orders created or updated during a time frame you specify:
 response = client.list_orders(created_after: 1.month.ago)
 orders = response.parse
 puts orders.count # => 100
-puts orders.first # => #<MWS::Orders::Order amazon_order_id="123...
+orders.first.inspect # => #<MWS::Orders::Order 902-3159896-1390916>
 )
 ```
 
@@ -41,7 +41,7 @@ Get one or more orders based on their order numbers:
 ```ruby
 response = client.get_order('123-1234567-1234567')
 order = response.parse
-puts order # => #<MWS::Orders::Order amazon_order_id="123...
+order.inspect # => #<MWS::Orders::Order 902-3159896-1390916>
 ```
 
 ### Order Items
