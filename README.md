@@ -39,7 +39,7 @@ client.list_orders_by_next_token(orders.next_token).parse
 Get one or more orders based on their order numbers:
 
 ```ruby
-response = client.get_order('123-1234567-1234567')
+response = client.get_order('902-3159896-1390916')
 order = response.parse
 order.inspect # => #<MWS::Orders::Order 902-3159896-1390916>
 ```
@@ -49,7 +49,7 @@ order.inspect # => #<MWS::Orders::Order 902-3159896-1390916>
 List order items:
 
 ```ruby
-response = client.list_order_items('123-1234567-1234567')
+response = client.list_order_items('902-3159896-1390916')
 order_items = response.parse
 ```
 
