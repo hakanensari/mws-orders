@@ -6,6 +6,8 @@ require 'money'
 require 'structure'
 require 'mws/orders/document'
 
+Money.rounding_mode = BigDecimal::ROUND_HALF_UP
+
 module MWS
   module Orders
     # A parsed object
