@@ -21,38 +21,33 @@ module MWS
       end
 
       def parse
-        case result_node.name
-        when /GetOrder/         then order
-        when /GetServiceStatus/ then service_status
-        when /ListOrders/       then orders
-        when /ListOrderItems/   then order_items
+        case payload.name
+        when /OrderItems$/    then order_items
+        when /Orders?$/       then orders
+        when /ServiceStatus$/ then service_status
         else raise NotImplementedError
         end
       end
 
-      private
-
-      def order
-        orders.first
+      def payload
+        @payload ||= find_payload
       end
 
+      private
+
       def orders
-        Orders.new(result_node)
+        Orders.new(payload)
       end
 
       def order_items
-        OrderItems.new(result_node)
+        OrderItems.new(payload)
       end
 
       def service_status
-        ServiceStatus.new(result_node)
+        ServiceStatus.new(payload)
       end
 
-      def result_node
-        @result_node ||= find_result_node
-      end
-
-      def find_result_node
+      def find_payload
         xml = Nokogiri(response.body)
         root = xml.children.first
 

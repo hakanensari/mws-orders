@@ -27,7 +27,6 @@ response = client.list_orders(created_after: 1.month.ago)
 orders = response.parse
 puts orders.count # => 100
 orders.first.inspect # => #<MWS::Orders::Order 902-3159896-1390916>
-)
 ```
 
 List the next page of orders:
@@ -40,8 +39,8 @@ Get one or more orders based on their order numbers:
 
 ```ruby
 response = client.get_order('902-3159896-1390916')
-order = response.parse
-order.inspect # => #<MWS::Orders::Order 902-3159896-1390916>
+orders = response.parse
+orders.first.inspect # => #<MWS::Orders::Order 902-3159896-1390916>
 ```
 
 ### Order Items
