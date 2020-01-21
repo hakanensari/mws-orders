@@ -22,7 +22,7 @@ module MWS
 
       def parse
         case payload.name
-        when /GetOrderResult/         then orders
+        when 'GetOrderResult'         then orders
         when /ListOrders.*Result/     then orders
         when /ListOrderItems.*Result/ then order_items
         when 'GetServiceStatusResult' then service_status
