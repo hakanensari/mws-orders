@@ -22,9 +22,10 @@ module MWS
 
       def parse
         case payload.name
-        when /OrderItems$/    then order_items
-        when /Orders?$/       then orders
-        when /ServiceStatus$/ then service_status
+        when /GetOrderResult/         then orders
+        when /ListOrders.*Result/     then orders
+        when /ListOrderItems.*Result/ then order_items
+        when 'GetServiceStatusResult' then service_status
         else raise NotImplementedError
         end
       end
