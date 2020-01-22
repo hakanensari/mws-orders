@@ -10,6 +10,10 @@ module MWS
     class OrderItems < Collection
       include Tokenable
 
+      def amazon_order_id
+        at_xpath('AmazonOrderId').text
+      end
+
       def each
         xpath('OrderItems/OrderItem').each { |node| yield OrderItem.new(node) }
       end

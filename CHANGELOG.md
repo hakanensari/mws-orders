@@ -5,6 +5,10 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+### Added
+
+- Expose OrderItems#amazon_order_id
+
 ## [0.6.1]
 
 ### Fixed

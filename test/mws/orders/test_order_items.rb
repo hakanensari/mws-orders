@@ -8,6 +8,10 @@ class TestOrderItems < MiniTest::Test
     @order_items = OrderItems.new(node)
   end
 
+  def test_amazon_order_id
+    assert @order_items.amazon_order_id
+  end
+
   def test_order_items
     refute_empty @order_items.to_a
     @order_items.each do |order_item|
