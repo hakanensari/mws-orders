@@ -71,7 +71,7 @@ class TestParser < MiniTest::Test
     payload = MiniTest::Mock.new
     payload.expect(:name, 'Foo')
     parser.stub(:payload, payload) do
-      assert_raises NotImplementedError do
+      assert_raises StandardError, 'not implemented' do
         parser.parse
       end
     end

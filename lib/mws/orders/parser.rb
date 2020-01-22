@@ -26,7 +26,7 @@ module MWS
         when /ListOrders.*Result/     then orders
         when /ListOrderItems.*Result/ then order_items
         when 'GetServiceStatusResult' then service_status
-        else raise NotImplementedError
+        else raise 'not implemented'
         end
       end
 
