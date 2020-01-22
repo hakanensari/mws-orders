@@ -34,6 +34,10 @@ module MWS
         @payload ||= find_payload
       end
 
+      def document
+        Nokogiri(response.body)
+      end
+
       private
 
       def orders
@@ -49,9 +53,7 @@ module MWS
       end
 
       def find_payload
-        xml = Nokogiri(response.body)
-        root = xml.children.first
-
+        root = document.children.first
         root.children.find { |node| node.name.include?('Result') }
       end
     end
