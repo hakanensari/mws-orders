@@ -8,14 +8,14 @@ class TestOrders < MiniTest::Test
     @orders = Orders.new(node)
   end
 
-  def test_has_orders
+  def test_orders
     refute_empty @orders.to_a
     @orders.each do |order|
       assert_kind_of Order, order
     end
   end
 
-  def test_has_next_token
+  def test_next_token
     refute_empty @orders.next_token
   end
 
