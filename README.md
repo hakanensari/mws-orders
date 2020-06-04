@@ -23,7 +23,7 @@ Set up credentials [when instantiating or with environment variables](https://gi
 List orders created or updated during a time frame you specify:
 
 ```ruby
-response = client.list_orders(created_after: 1.month.ago)
+response = client.list_orders('ATVPDKIKX0DER', created_after: 1.month.ago)
 orders = response.parse
 puts orders.count # => 100
 orders.first.inspect # => #<MWS::Orders::Order 902-3159896-1390916>
