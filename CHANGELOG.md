@@ -9,6 +9,10 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 - Expose OrderItems#amazon_order_id
 
+### Removed
+
+- Do not support Ruby 2.4
+
 ## [0.6.1]
 
 ### Fixed
